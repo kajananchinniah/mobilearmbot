@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <robot name="mobilearmbot">
+	<material name ="blue">
+		<color rgba="0 0 0.1 1"/>
+	</material>
 
 	<material name="black">
 		<color rgba="0 0 0 1"/>
@@ -8,20 +11,84 @@
 	<material name="white">
 		<color rgba="1 1 1 1"/>
 	</material>
-	<material name = "blue">
-		<color rgba="0 0 0.8 1"/>
-	</material>
 
-	<-- Base link --> 
+	<!-- Base link --> 
 	<link name="base_link">
 		<visual>
-			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<box size="1 1 1"/>
+				<box size="0.3 0.3 0.15"/>
 			</geometry>
 			<material name="white"/>
 		</visual>
 	</link>
+
+	<!-- Right front wheel -->
+	<link name="right_front_wheel">
+		<visual>
+			<origin rpy="1.57 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="0.05" radius="0.05"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+	</link>
+	<joint name="right_front_wheel_joint" type="continuous">
+		<parent link="base_link"/>
+		<child link="right_front_wheel"/>
+		<origin xyz="0.075 -0.155 -0.075" rpy="0 0 0"/>
+		<axis xyz="0 1 0"/>
+	</joint>
+
+	<!-- Right back wheel -->
+	<link name="right_back_wheel">
+		<visual>
+			<origin rpy="1.57 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="0.05" radius="0.05"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+	</link>
+	<joint name="right_back_wheel_joint" type="continuous">
+		<parent link="base_link"/>
+		<child link="right_back_wheel"/>
+		<origin xyz="-0.075 -0.155 -0.075" rpy="0 0 0"/>
+		<axis xyz="0 1 0"/>
+	</joint>
+
+	<!-- Left front wheel -->
+	<link name="left_front_wheel">
+		<visual>
+			<origin rpy="1.57 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="0.05" radius="0.05"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+	</link>
+	<joint name="left_front_wheel_joint" type="continuous">
+		<parent link="base_link"/>
+		<child link="left_front_wheel"/>
+		<origin xyz="0.075 0.155 -0.075" rpy="0 0 0"/>
+		<axis xyz="0 1 0"/>
+	</joint>
+
+	<!-- Left back wheel -->
+	<link name="left_back_wheel">
+		<visual>
+			<origin rpy="1.57 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="0.05" radius="0.05"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+	</link>
+	<joint name="left_back_wheel_joint" type="continuous">
+		<parent link="base_link"/>
+		<child link="left_back_wheel"/>
+		<origin xyz="-0.075 0.155 -0.075" rpy="0 0 0"/>
+		<axis xyz="0 1 0"/>
+	</joint>
+
 </robot>
-
-
