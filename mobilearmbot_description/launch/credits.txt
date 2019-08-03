@@ -1,0 +1,2 @@
+I copy and pasted a launch file from https://github.com/ros/urdf_sim_tutorial/blob/master/launch/gazebo.launch for testing 
+my model. 
