@@ -1,0 +1,21 @@
+<launch>
+  <arg name="model" default="$(find mobilearmbot_description)/urdf/mobilearmbot.urdf"/>
+  <arg name="rvizconfig" default="$(find mobilearmbot_description)/rviz/mobilearmbot.rviz" />
+
+  <include file="$(find mobilearmbot_description)/launch/mobilearmbot_test_gazebo.launch">
+    <arg name="model" value="$(arg model)" />
+  </include>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" />
+
+  <node name="r2d2_controller_spawner" pkg="controller_manager" type="spawner"
+    args="r2d2_joint_state_controller
+          r2d2_head_controller
+          r2d2_gripper_controller
+          r2d2_diff_drive_controller
+          --shutdown-timeout 3"/>
+
+  <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+    <param name="default_topic" value="/r2d2_diff_drive_controller/cmd_vel"/>
+  </node>
+</launch>

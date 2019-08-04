@@ -1,16 +1,18 @@
 <?xml version="1.0"?>
 <robot name="mobilearmbot">
-	<material name ="blue">
-		<color rgba="0 0 0.1 1"/>
-	</material>
 
-	<material name="black">
-		<color rgba="0 0 0 1"/>
-	</material>
+        <material name ="blue">
+                <color rgba="0 0 0.1 1"/>
+        </material>
 
-	<material name="white">
-		<color rgba="1 1 1 1"/>
-	</material>
+        <material name="black">
+                <color rgba="0 0 0 1"/>
+        </material>
+
+        <material name="white">
+                <color rgba="1 1 1 1"/>
+        </material>
+	
 
 	<!-- Base link --> 
 	<link name="base_link">
@@ -59,6 +61,22 @@
 		<origin xyz="0.075 -0.155 -0.075" rpy="0 0 0"/>
 		<axis xyz="0 1 0"/>
 	</joint>
+	<gazebo reference="right_front_wheel">
+		<mu1 value="0.1"/>
+		<mu2 value="0.1"/>
+		<kp value="10000.0"/>
+		<kd value="1.0"/>
+		<material>Gazebo/Black</material>
+	</gazebo>
+	<transmission name="right_front_wheel_trans">
+		<type>transmission_interface/SimpleTransmission</type>
+		<actuator name="right_front_wheel_motor">
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+		<joint name="right_front_wheel_joint">
+			<hardwareInterface>VelocityJointInterface</hardwareInterface>
+		</joint>
+	</transmission>
 
 	<!-- Right back wheel -->
 	<link name="right_back_wheel">
@@ -86,6 +104,23 @@
 		<origin xyz="-0.075 -0.155 -0.075" rpy="0 0 0"/>
 		<axis xyz="0 1 0"/>
 	</joint>
+        <gazebo reference="right_back_wheel">
+                <mu1 value="0.1"/>
+                <mu2 value="0.1"/>
+                <kp value="10000.0"/>
+                <kd value="1.0"/>
+                <material>Gazebo/Black</material>
+        </gazebo>
+        <transmission name="right_back_wheel_trans">
+                <type>transmission_interface/SimpleTransmission</type>
+                <actuator name="right_back_wheel_motor">
+                        <mechanicalReduction>1</mechanicalReduction>
+                </actuator>
+                <joint name="right_back_wheel_joint">
+                        <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                </joint>
+        </transmission>
+
 
 	<!-- Left front wheel -->
 	<link name="left_front_wheel">
@@ -113,6 +148,22 @@
 		<origin xyz="0.075 0.155 -0.075" rpy="0 0 0"/>
 		<axis xyz="0 1 0"/>
 	</joint>
+        <gazebo reference="left_front_wheel">
+                <mu1 value="0.1"/>
+                <mu2 value="0.1"/>
+                <kp value="10000.0"/>
+                <kd value="1.0"/>
+                <material>Gazebo/Black</material>
+        </gazebo>
+        <transmission name="left_front_wheel_trans">
+                <type>transmission_interface/SimpleTransmission</type>
+                <actuator name="left_front_wheel_motor">
+                        <mechanicalReduction>1</mechanicalReduction>
+                </actuator>
+                <joint name="left_front_wheel_joint">
+                        <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                </joint>
+        </transmission>
 
 	<!-- Left back wheel -->
 	<link name="left_back_wheel">
@@ -140,4 +191,26 @@
 		<origin xyz="-0.075 0.155 -0.075" rpy="0 0 0"/>
 		<axis xyz="0 1 0"/>
 	</joint>
+        <gazebo reference="left_back_wheel">
+                <mu1 value="0.1"/>
+                <mu2 value="0.1"/>
+                <kp value="10000.0"/>
+                <kd value="1.0"/>
+                <material>Gazebo/Black</material>
+        </gazebo>
+        <transmission name="left_back_wheel_trans">
+                <type>transmission_interface/SimpleTransmission</type>
+                <actuator name="left_back_wheel_motor">
+                        <mechanicalReduction>1</mechanicalReduction>
+                </actuator>
+                <joint name="left_back_wheel_joint">
+                        <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                </joint>
+	</transmission>
+
+	<gazebo>
+		<plugin name="gazebo_ros_control" filename="ibgazebo_ros_control.so">
+			<robotNamespace>/</robotNamespace>
+		</plugin>
+	</gazebo>
 </robot>
