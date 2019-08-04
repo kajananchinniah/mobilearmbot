@@ -10,5 +10,4 @@ Currently, I just want to have the drivetrain working, so most of my efforts wil
 working on the manipulator once the drivetrain is completely done. For sensors, I plan on having al laser scan, imu & camera.
 The manipulator will be heavily based on the open manipulator x from robotis.
 
-Currently done:
-- URDF visualization, collisions and inertial description
+Currently, the robot subscribes to cmd_vel (using the gazebo plugins), and is able to use a laser scanner. 
