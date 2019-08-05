@@ -11,7 +11,30 @@
 	<xacro:property name="wheel_diam" value="0.1"/>
 	<xacro:property name="wheel_length" value="0.05"/>
 	<xacro:property name="wheel_mass" value="0.1"/>
-        <xacro:property name="pi" value="3.1415"/>
+	<xacro:property name="pi" value="3.1415"/>
+
+	<xacro:macro name="wheel_link_description">
+		<visual>
+			<origin rpy="${pi/2} 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="${wheel_length}" radius="${wheel_diam/2.0}"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+		<collision>
+			<origin rpy="${pi/2} 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="${wheel_length}" radius="${wheel_diam/2.0}"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<mass value="${wheel_mass}"/>
+			<inertia ixx="${wheel_mass * (3*wheel_diam*wheel_diam/4.0 + wheel_length*wheel_length)/12.0}" 
+				ixy="0.0" ixz="0.0" 
+				iyy="${wheel_mass * (3*wheel_diam*wheel_diam/4.0 + wheel_length*wheel_length)/12.0}" 
+				iyz="0.0" izz="${0.5*wheel_mass*wheel_diam*wheel_diam/4.0}"/>
+		</inertial>
+	</xacro:macro>
 
 	<!-- Base link --> 
 	<link name="base_link">
@@ -39,23 +62,7 @@
 
 	<!-- Right front wheel -->
 	<link name="right_front_wheel">
-		<visual>
-			<origin rpy="1.57 0 0" xyz="0 0 0"/>
-			<geometry>
-				<cylinder length="0.05" radius="0.05"/>
-			</geometry>
-			<material name="black"/>
-		</visual>
-		<collision>
-			<origin rpy="1.57 0 0" xyz="0 0 0"/>
-			<geometry>
-				<cylinder length="0.05" radius="0.05"/>
-			</geometry>
-		</collision>
-		<inertial>
-			<mass value="0.1"/>
-			<inertia ixx="8.33e-05" ixy="0" ixz="0" iyy="8.33e-05" iyz="0" izz="1.25e-04"/> 
-		</inertial>
+		<xacro:wheel_link_description />
 	</link>
 	<joint name="right_front_wheel_joint" type="continuous">
 		<parent link="base_link"/>
@@ -73,23 +80,7 @@
 
 	<!-- Right back wheel -->
 	<link name="right_back_wheel">
-		<visual>
-			<origin rpy="1.57 0 0" xyz="0 0 0"/>
-			<geometry>
-				<cylinder length="0.05" radius="0.05"/>
-			</geometry>
-			<material name="black"/>
-		</visual>
-		<collision>
-			<origin rpy="1.57 0 0" xyz="0 0 0"/>
-			<geometry>
-				<cylinder length="0.05" radius="0.05"/>
-			</geometry>
-		</collision>
-		<inertial>
-			<mass value="0.1"/>
-			<inertia ixx="8.33e-05" ixy="0" ixz="0" iyy="8.33e-05" iyz="0" izz="1.25e-04"/>
-		</inertial>
+		<xacro:wheel_link_description />
 	</link>
 	<joint name="right_back_wheel_joint" type="continuous">
 		<parent link="base_link"/>
@@ -107,23 +98,7 @@
 
 	<!-- Left front wheel -->
 	<link name="left_front_wheel">
-		<visual>
-			<origin rpy="1.57 0 0" xyz="0 0 0"/>
-			<geometry>
-				<cylinder length="0.05" radius="0.05"/>
-			</geometry>
-			<material name="black"/>
-		</visual>
-		<collision>
-			<origin rpy="1.57 0 0" xyz="0 0 0"/>
-			<geometry>
-				<cylinder length="0.05" radius="0.05"/>
-			</geometry>
-		</collision>
-		<inertial>
-			<mass value="0.1"/>
-			<inertia ixx="8.33e-05" ixy="0" ixz="0" iyy="8.33e-05" iyz="0" izz="1.25e-04"/> 
-		</inertial>
+		<xacro:wheel_link_description />
 	</link>
 	<joint name="left_front_wheel_joint" type="continuous">
 		<parent link="base_link"/>
@@ -141,23 +116,7 @@
 
 	<!-- Left back wheel -->
 	<link name="left_back_wheel">
-		<visual>
-			<origin rpy="1.57 0 0" xyz="0 0 0"/>
-			<geometry>
-				<cylinder length="0.05" radius="0.05"/>
-			</geometry>
-			<material name="black"/>
-		</visual>
-		<collision>
-			<origin rpy="1.57 0 0" xyz="0 0 0"/>
-			<geometry>
-				<cylinder length="0.05" radius="0.05"/>
-			</geometry>
-		</collision>
-		<inertial>
-			<mass value="0.1"/>
-			<inertia ixx="8.33e-05" ixy="0" ixz="0" iyy="8.33e-05" iyz="0" izz="1.25e-04"/> 
-		</inertial>
+		<xacro:wheel_link_description />
 	</link>
 	<joint name="left_back_wheel_joint" type="continuous">
 		<parent link="base_link"/>
