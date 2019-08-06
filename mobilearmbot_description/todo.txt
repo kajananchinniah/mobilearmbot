@@ -1,3 +1,4 @@
 TODO in this folder:
-- Convert to xacro format & separate the necessary code into gazebo and urdf 
+- Convert to xacro format & separate the necessary code into gazebo and urdf
+- Figure out why the robot is tipping over 
 - Add the manipulator
