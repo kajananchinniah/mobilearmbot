@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<robot name="mobilearmbot_sim" xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<gazebo reference="base_link">
+		<material>Gazebo/Grey</material>
+	</gazebo>
+
+	<gazebo reference="right_front_wheel">
+		<mu1>0.1</mu1>
+		<mu2>0.1</mu2>
+		<kp>10000.0</kp>
+		<kd>10</kd>
+		<material>Gazebo/Black</material>
+	</gazebo>
+
+        <gazebo reference="right_back_wheel">
+                <mu1>0.1</mu1>
+                <mu2>0.1</mu2>
+                <kp>10000.0</kp>
+                <kd>10</kd>
+                <material>Gazebo/Black</material>
+	</gazebo>
+
+        <gazebo reference="left_front_wheel">
+                <mu1>0.1</mu1>
+                <mu2>0.1</mu2>
+                <kp>10000.0</kp>
+                <kd>10</kd>
+                <material>Gazebo/Black</material>
+	</gazebo>
+
+        <gazebo reference="left_back_wheel">
+                <mu1>0.1</mu1>
+                <mu2>0.1</mu2>
+                <kp>10000.0</kp>
+                <kd>10</kd>
+                <material>Gazebo/Black</material>
+	</gazebo>
+    
+	<gazebo reference="laserscan">
+                <material>Gazebo/Black</material>
+                <sensor type="ray" name="laserscan1">
+                        <pose>0 0 0 0 0 0</pose>
+                        <visualize>false</visualize>
+                        <update_rate>10</update_rate>
+                        <ray>
+                                <scan>
+                                        <horizontal>
+                                                <samples>360</samples>
+                                                <resolution>1</resolution>
+                                                <min_angle>0.0</min_angle>
+                                                <max_angle>6.28</max_angle>
+                                        </horizontal>
+                                </scan>
+                                <range>
+                                        <min>0.2</min>
+                                        <max>30.0</max>
+                                        <resolution>0.015</resolution>
+                                </range>
+                                <noise>
+                                        <type>gaussian</type>
+                                        <mean>0</mean>
+                                        <stddev>0.01</stddev>
+                                </noise>
+                        </ray>
+                        <plugin name="mobilearmbot_laserscan_controller" filename="libgazebo_ros_laser.so">
+                                <topicName>scan</topicName>
+                                <frameName>base_scan</frameName>
+                        </plugin>
+                </sensor>
+	</gazebo>
+
+        <gazebo>
+                <plugin name="mobilearmbot_controller" filename="libgazebo_ros_skid_steer_drive.so">
+                        <updateRate>30.0</updateRate>
+                        <robotNamespace>/</robotNamespace>
+                        <leftFrontJoint>left_front_wheel_joint</leftFrontJoint>
+                        <rightFrontJoint>right_front_wheel_joint</rightFrontJoint>
+                        <leftRearJoint>left_back_wheel_joint</leftRearJoint>
+                        <rightRearJoint>right_back_wheel_joint</rightRearJoint>
+                        <wheelSeparation>0.3</wheelSeparation>
+                        <wheelDiameter>0.1</wheelDiameter>
+                        <robotBaseFrame>base_link</robotBaseFrame>
+                        <torque>20</torque>
+                        <topicName>cmd_vel</topicName>
+                        <odometryTopic>odom</odometryTopic>
+                        <odometryFrame>odom</odometryFrame>
+                        <odometrySource>world</odometrySource>
+                        <publishOdomTF>true</publishOdomTF>
+                        <publishWheelJointState>true</publishWheelJointState>
+                        <broadcastTF>true</broadcastTF>
+                </plugin>
+	</gazebo>
+</robot>

@@ -58,7 +58,7 @@
 	<joint name="right_front_wheel_joint" type="continuous">
 		<parent link="base_link"/>
 		<child link="right_front_wheel"/>
-		<origin xyz="0.075 -0.155 -0.075" rpy="0 0 0"/>
+		<origin xyz="0.05 -0.155 -0.075" rpy="0 0 0"/>
 		<axis xyz="0 1 0"/>
 	</joint>
 	<gazebo reference="right_front_wheel">
@@ -92,7 +92,7 @@
 	<joint name="right_back_wheel_joint" type="continuous">
 		<parent link="base_link"/>
 		<child link="right_back_wheel"/>
-		<origin xyz="-0.075 -0.155 -0.075" rpy="0 0 0"/>
+		<origin xyz="-0.05 -0.155 -0.075" rpy="0 0 0"/>
 		<axis xyz="0 1 0"/>
 	</joint>
         <gazebo reference="right_back_wheel">
@@ -126,7 +126,7 @@
 	<joint name="left_front_wheel_joint" type="continuous">
 		<parent link="base_link"/>
 		<child link="left_front_wheel"/>
-		<origin xyz="0.075 0.155 -0.075" rpy="0 0 0"/>
+		<origin xyz="0.05 0.155 -0.075" rpy="0 0 0"/>
 		<axis xyz="0 1 0"/>
 	</joint>
         <gazebo reference="left_front_wheel">
@@ -160,7 +160,7 @@
 	<joint name="left_back_wheel_joint" type="continuous">
 		<parent link="base_link"/>
 		<child link="left_back_wheel"/>
-		<origin xyz="-0.075 0.155 -0.075" rpy="0 0 0"/>
+		<origin xyz="-0.05 0.155 -0.075" rpy="0 0 0"/>
 		<axis xyz="0 1 0"/>
 	</joint>
         <gazebo reference="left_back_wheel">
@@ -199,7 +199,7 @@
 		<material>Gazebo/Black</material>
 		<sensor type="ray" name="laserscan1">
 			<pose>0 0 0 0 0 0</pose>
-			<visualize>false</visualize>
+			<visualize>true</visualize>
 			<update_rate>10</update_rate>
 			<ray>
 				<scan>
