@@ -6,34 +6,18 @@
 	</gazebo>
 
 	<gazebo reference="right_front_wheel">
-		<mu1>0.1</mu1>
-		<mu2>0.1</mu2>
-		<kp>10000.0</kp>
-		<kd>10</kd>
 		<material>Gazebo/Black</material>
 	</gazebo>
 
         <gazebo reference="right_back_wheel">
-                <mu1>0.1</mu1>
-                <mu2>0.1</mu2>
-                <kp>10000.0</kp>
-                <kd>10</kd>
                 <material>Gazebo/Black</material>
 	</gazebo>
 
         <gazebo reference="left_front_wheel">
-                <mu1>0.1</mu1>
-                <mu2>0.1</mu2>
-                <kp>10000.0</kp>
-                <kd>10</kd>
                 <material>Gazebo/Black</material>
 	</gazebo>
 
         <gazebo reference="left_back_wheel">
-                <mu1>0.1</mu1>
-                <mu2>0.1</mu2>
-                <kp>10000.0</kp>
-                <kd>10</kd>
                 <material>Gazebo/Black</material>
 	</gazebo>
     
@@ -78,7 +62,7 @@
                         <rightFrontJoint>right_front_wheel_joint</rightFrontJoint>
                         <leftRearJoint>left_back_wheel_joint</leftRearJoint>
                         <rightRearJoint>right_back_wheel_joint</rightRearJoint>
-                        <wheelSeparation>0.3</wheelSeparation>
+                        <wheelSeparation>0.67</wheelSeparation>
                         <wheelDiameter>0.1</wheelDiameter>
                         <robotBaseFrame>base_link</robotBaseFrame>
                         <torque>20</torque>

@@ -13,8 +13,10 @@
 	<!-- Constants & definition for the four wheels -->
 	<xacro:property name="wheel_diam" value="0.1"/>
 	<xacro:property name="wheel_length" value="0.05"/>
-	<xacro:property name="wheel_mass" value="0.1"/>
+	<xacro:property name="wheel_mass" value="1"/>
+	<xacro:property name="wheel_base_offset" value="0.02"/>
 	<xacro:property name="pi" value="3.1415"/>
+	<xacro:property name="wheel_df" value="0.0"/>
 
 	<xacro:macro name="wheel_link_description">
 		<visual>
@@ -43,7 +45,7 @@
 	<xacro:property name="scan_length" value="0.05"/>
 	<xacro:property name="scan_width" value="0.05"/>
 	<xacro:property name="scan_height" value="0.05"/>
-	<xacro:property name="scan_mass" value="0.01"/>
+	<xacro:property name="scan_mass" value="0.1"/>
 
 	<!-- Base link --> 
 	<link name="base_link">
@@ -62,6 +64,7 @@
 		</collision>
 		<inertial>
 			<mass value="${base_mass}"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
 			<inertia ixx="${base_mass * (base_height*base_height + base_length*base_length)/12.0}" 
 				ixy="0.0" ixz="0.0" 
 				iyy="${base_mass * (base_width*base_width + base_length*base_length)/12.0}" 
@@ -76,8 +79,9 @@
 	<joint name="right_front_wheel_joint" type="continuous">
 		<parent link="base_link"/>
 		<child link="right_front_wheel"/>
-		<origin xyz="${base_length/4.0} ${-base_width/2.0 - 0.005} ${-base_height/2.0}" rpy="0 0 0"/>
+		<origin xyz="${base_length/3.0} ${-base_width/2.0 - wheel_base_offset} ${-base_height/2.5}" rpy="0 0 0"/>
 		<axis xyz="0 1 0"/>
+		<dynamics damping="${wheel_df}"/>
 	</joint>
 
 	<!-- Right back wheel -->
@@ -87,8 +91,9 @@
 	<joint name="right_back_wheel_joint" type="continuous">
 		<parent link="base_link"/>
 		<child link="right_back_wheel"/>
-		<origin xyz="${-base_length/4.0} ${-base_width/2.0 - 0.005} ${-base_height/2.0}" rpy="0 0 0"/>
+		<origin xyz="${-base_length/3.0} ${-base_width/2.0 - wheel_base_offset} ${-base_height/2.5}" rpy="0 0 0"/>
 		<axis xyz="0 1 0"/>
+		<dynamics damping="${wheel_df}"/>
 	</joint>
 
 	<!-- Left front wheel -->
@@ -98,8 +103,9 @@
 	<joint name="left_front_wheel_joint" type="continuous">
 		<parent link="base_link"/>
 		<child link="left_front_wheel"/>
-		<origin xyz="${base_length/4.0} ${base_width/2.0 + 0.005} ${-base_height/2.0}" rpy="0 0 0"/>
+		<origin xyz="${base_length/3.0} ${base_width/2.0 + wheel_base_offset} ${-base_height/2.5}" rpy="0 0 0"/>
 		<axis xyz="0 1 0"/>
+		<dynamics damping="${wheel_df}"/>
 	</joint>
 
 	<!-- Left back wheel -->
@@ -109,8 +115,9 @@
 	<joint name="left_back_wheel_joint" type="continuous">
 		<parent link="base_link"/>
 		<child link="left_back_wheel"/>
-		<origin xyz="${-base_length/4.0} ${base_width/2.0 + 0.005} ${-base_height/2.0}" rpy="0 0 0"/>
+		<origin xyz="${-base_length/3.0} ${base_width/2.0 + wheel_base_offset} ${-base_height/2.5}" rpy="0 0 0"/>
 		<axis xyz="0 1 0"/>
+		<dynamics damping="${wheel_df}"/>
 	</joint>
 
 	<link name="laserscan">
@@ -133,7 +140,6 @@
                                 ixy="0.0" ixz="0.0" 
                                 iyy="${scan_mass * (scan_width*scan_width + scan_length*scan_length)/12.0}" 
                                 iyz="0.0" izz="${scan_mass * (scan_width*scan_width + scan_height*scan_height)/12.0}"/>
-
 		</inertial>
 	</link>
 	<joint name="laserscan_joint" type="fixed">
