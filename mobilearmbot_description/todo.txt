@@ -1,3 +1,2 @@
 TODO in this folder:
-- Update the original URDF file (xacro is the most up to date now!)
 - Add the manipulator

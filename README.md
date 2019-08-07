@@ -6,8 +6,10 @@ This robot will probably not be viable to create in real life. My intent is to f
 create a real robot. The turtlebot3 was also a 2wd, which meant that with a manipulator, it was prone to tipping, which
 is why I chose to do a 4wd w/ a manipulator.
 
-Currently, I just want to have the drivetrain working, so most of my efforts will be directed towards that. I plan to start
-working on the manipulator once the drivetrain is completely done. For sensors, I plan on having al laser scan, imu & camera.
-The manipulator will be heavily based on the open manipulator x from robotis.
+Currently, I just want to have the entire robot described, so most of my efforts will be directed towards that. I plan to start
+working on other files once the robot is fully described. For sensors, I currently only plan on having a laser scan, but I might
+add more if I see fit.
+
+I'm planning on using a simple manipulator. 
 
 Currently, the robot subscribes to cmd_vel (using the gazebo plugins), and is able to use a laser scanner. 
