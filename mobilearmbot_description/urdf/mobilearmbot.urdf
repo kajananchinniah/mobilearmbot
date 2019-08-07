@@ -1,252 +1,238 @@
-<?xml version="1.0"?>
-<robot name="mobilearmbot">
-
-        <material name ="blue">
-                <color rgba="0 0 0.1 1"/>
-        </material>
-
-        <material name="black">
-                <color rgba="0 0 0 1"/>
-        </material>
-
-        <material name="white">
-                <color rgba="1 1 1 1"/>
-        </material>
-	
-
-	<!-- Base link --> 
-	<link name="base_link">
-		<visual>
-			<origin rpy="0 0 0" xyz="0 0 0"/>
-			<geometry>
-				<box size="0.3 0.3 0.15"/>
-			</geometry>
-			<material name="white"/>
-		</visual>
-		<collision>
-			<origin rpy="0 0 0" xyz="0 0 0"/>
-			<geometry>
-				<box size="0.3 0.3 0.15"/>
-			</geometry>
-		</collision>
-		<inertial>
-			<mass value="5.0"/>
-			<inertia ixx="0.0281" ixy="0.0" ixz="0.0" iyy="0.0281" iyz="0.0" izz="0.045"/>
-		</inertial>	
-	</link>
-
-	<!-- Right front wheel -->
-	<link name="right_front_wheel">
-		<visual>
-			<origin rpy="1.57 0 0" xyz="0 0 0"/>
-			<geometry>
-				<cylinder length="0.05" radius="0.05"/>
-			</geometry>
-			<material name="black"/>
-		</visual>
-		<collision>
-			<origin rpy="1.57 0 0" xyz="0 0 0"/>
-			<geometry>
-				<cylinder length="0.05" radius="0.05"/>
-			</geometry>
-		</collision>
-		<inertial>
-			<mass value="1"/>
-			<inertia ixx="8.33e-05" ixy="0" ixz="0" iyy="8.33e-05" iyz="0" izz="1.25e-04"/> 
-		</inertial>
-	</link>
-	<joint name="right_front_wheel_joint" type="continuous">
-		<parent link="base_link"/>
-		<child link="right_front_wheel"/>
-		<origin xyz="0.1 -0.175 -0.06" rpy="0 0 0"/>
-		<axis xyz="0 1 0"/>
-	</joint>
-	<gazebo reference="right_front_wheel">
-		<mu1 value="0.1"/>
-		<mu2 value="0.1"/>
-		<kp value="10000.0"/>
-		<kd value="1.0"/>
-		<material>Gazebo/Black</material>
-	</gazebo>
-
-	<!-- Right back wheel -->
-	<link name="right_back_wheel">
-		<visual>
-			<origin rpy="1.57 0 0" xyz="0 0 0"/>
-			<geometry>
-				<cylinder length="0.05" radius="0.05"/>
-			</geometry>
-			<material name="black"/>
-		</visual>
-		<collision>
-			<origin rpy="1.57 0 0" xyz="0 0 0"/>
-			<geometry>
-				<cylinder length="0.05" radius="0.05"/>
-			</geometry>
-		</collision>
-		<inertial>
-			<mass value="1"/>
-			<inertia ixx="8.33e-05" ixy="0" ixz="0" iyy="8.33e-05" iyz="0" izz="1.25e-04"/>
-		</inertial>
-	</link>
-	<joint name="right_back_wheel_joint" type="continuous">
-		<parent link="base_link"/>
-		<child link="right_back_wheel"/>
-		<origin xyz="-0.05 -0.155 -0.075" rpy="0 0 0"/>
-		<axis xyz="0 1 0"/>
-	</joint>
-        <gazebo reference="right_back_wheel">
-                <mu1 value="0.1"/>
-                <mu2 value="0.1"/>
-                <kp value="10000.0"/>
-                <kd value="1.0"/>
-                <material>Gazebo/Black</material>
-        </gazebo>
-
-	<!-- Left front wheel -->
-	<link name="left_front_wheel">
-		<visual>
-			<origin rpy="1.57 0 0" xyz="0 0 0"/>
-			<geometry>
-				<cylinder length="0.05" radius="0.05"/>
-			</geometry>
-			<material name="black"/>
-		</visual>
-		<collision>
-			<origin rpy="1.57 0 0" xyz="0 0 0"/>
-			<geometry>
-				<cylinder length="0.05" radius="0.05"/>
-			</geometry>
-		</collision>
-		<inertial>
-			<mass value="1"/>
-			<inertia ixx="8.33e-05" ixy="0" ixz="0" iyy="8.33e-05" iyz="0" izz="1.25e-04"/> 
-		</inertial>
-	</link>
-	<joint name="left_front_wheel_joint" type="continuous">
-		<parent link="base_link"/>
-		<child link="left_front_wheel"/>
-		<origin xyz="0.05 0.155 -0.075" rpy="0 0 0"/>
-		<axis xyz="0 1 0"/>
-	</joint>
-        <gazebo reference="left_front_wheel">
-                <mu1 value="0.1"/>
-                <mu2 value="0.1"/>
-                <kp value="10000.0"/>
-                <kd value="1.0"/>
-                <material>Gazebo/Black</material>
-        </gazebo>
-
-	<!-- Left back wheel -->
-	<link name="left_back_wheel">
-		<visual>
-			<origin rpy="1.57 0 0" xyz="0 0 0"/>
-			<geometry>
-				<cylinder length="0.05" radius="0.05"/>
-			</geometry>
-			<material name="black"/>
-		</visual>
-		<collision>
-			<origin rpy="1.57 0 0" xyz="0 0 0"/>
-			<geometry>
-				<cylinder length="0.05" radius="0.05"/>
-			</geometry>
-		</collision>
-		<inertial>
-			<mass value="1"/>
-			<inertia ixx="8.33e-05" ixy="0" ixz="0" iyy="8.33e-05" iyz="0" izz="1.25e-04"/> 
-		</inertial>
-	</link>
-	<joint name="left_back_wheel_joint" type="continuous">
-		<parent link="base_link"/>
-		<child link="left_back_wheel"/>
-		<origin xyz="-0.05 0.155 -0.075" rpy="0 0 0"/>
-		<axis xyz="0 1 0"/>
-	</joint>
-        <gazebo reference="left_back_wheel">
-                <mu1 value="0.1"/>
-                <mu2 value="0.1"/>
-                <kp value="10000.0"/>
-                <kd value="1.0"/>
-                <material>Gazebo/Black</material>
-        </gazebo>
-
-	<link name="laserscan">
-		<visual>
-			<origin rpy="0 0 0" xyz="0 0 0"/>
-			<geometry>
-				<box size="0.05 0.05 0.05"/>
-			</geometry>
-			<material name="blue"/>
-		</visual>
-		<collision>
-			<origin rpy="0 0 0" xyz="0 0 0"/>
-			<geometry>
-				<box size="0.05 0.05 0.05"/>
-			</geometry>
-		</collision>
-		<inertial>
-			<mass value="0.01"/>
-			<inertia ixx="1.67e-7" iyy="1.67e-7" izz="1.67e-7" ixy="0" ixz="0" iyz="0"/>
-		</inertial>
-	</link>
-	<joint name="laserscan_joint" type="fixed">
-		<parent link="base_link"/>
-		<child link="laserscan"/>
-		<origin xyz="0.1 0 0.10" rpy="0 0 0"/>
-	</joint>
-	<gazebo reference="laserscan">
-		<material>Gazebo/Black</material>
-		<sensor type="ray" name="laserscan1">
-			<pose>0 0 0 0 0 0</pose>
-			<visualize>true</visualize>
-			<update_rate>10</update_rate>
-			<ray>
-				<scan>
-					<horizontal>
-						<samples>360</samples>
-						<resolution>1</resolution>
-						<min_angle>0.0</min_angle>
-						<max_angle>6.28</max_angle>
-					</horizontal>
-				</scan>
-				<range>
-					<min>0.2</min>
-					<max>30.0</max>
-					<resolution>0.015</resolution>
-				</range>
-				<noise>
-					<type>gaussian</type>
-					<mean>0</mean>
-					<stddev>0.01</stddev>
-				</noise>
-			</ray>
-			<plugin name="mobilearmbot_laserscan_controller" filename="libgazebo_ros_laser.so">
-				<topicName>scan</topicName>
-				<frameName>base_scan</frameName>
-			</plugin>
-		</sensor>
-	</gazebo>
-
-	<gazebo>
-		<plugin name="mobilearmbot_controller" filename="libgazebo_ros_skid_steer_drive.so">
-			<updateRate>30.0</updateRate>
-			<robotNamespace>/</robotNamespace>
-			<leftFrontJoint>left_front_wheel_joint</leftFrontJoint>
-			<rightFrontJoint>right_front_wheel_joint</rightFrontJoint>
-			<leftRearJoint>left_back_wheel_joint</leftRearJoint>
-			<rightRearJoint>right_back_wheel_joint</rightRearJoint>
-			<wheelSeparation>0.3</wheelSeparation>
-			<wheelDiameter>0.1</wheelDiameter>
-			<robotBaseFrame>base_link</robotBaseFrame>
-			<torque>20</torque>
-			<topicName>cmd_vel</topicName>
-			<odometryTopic>odom</odometryTopic>
-			<odometryFrame>odom</odometryFrame>
-			<odometrySource>world</odometrySource>
-			<publishOdomTF>true</publishOdomTF>
-			<publishWheelJointState>true</publishWheelJointState>
-			<broadcastTF>true</broadcastTF>
-		</plugin>
-	</gazebo>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- =================================================================================== -->
+<!-- |    This document was autogenerated by xacro from mobilearmbot.urdf.xacro        | -->
+<!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
+<!-- =================================================================================== -->
+<robot name="mobilearmbot" xmlns:xacro="http://ros.org/wiki/xacro">
+  <material name="blue">
+    <color rgba="0 0 0.1 1"/>
+  </material>
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+  <gazebo reference="base_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  <gazebo reference="right_front_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="right_back_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="left_front_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="left_back_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="laserscan">
+    <material>Gazebo/Black</material>
+    <sensor name="laserscan1" type="ray">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>10</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>0.0</min_angle>
+            <max_angle>6.28</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.2</min>
+          <max>30.0</max>
+          <resolution>0.015</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin filename="libgazebo_ros_laser.so" name="mobilearmbot_laserscan_controller">
+        <topicName>scan</topicName>
+        <frameName>base_scan</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <gazebo>
+    <plugin filename="libgazebo_ros_skid_steer_drive.so" name="mobilearmbot_controller">
+      <updateRate>30.0</updateRate>
+      <robotNamespace>/</robotNamespace>
+      <leftFrontJoint>left_front_wheel_joint</leftFrontJoint>
+      <rightFrontJoint>right_front_wheel_joint</rightFrontJoint>
+      <leftRearJoint>left_back_wheel_joint</leftRearJoint>
+      <rightRearJoint>right_back_wheel_joint</rightRearJoint>
+      <wheelSeparation>0.67</wheelSeparation>
+      <wheelDiameter>0.1</wheelDiameter>
+      <robotBaseFrame>base_link</robotBaseFrame>
+      <torque>20</torque>
+      <topicName>cmd_vel</topicName>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometrySource>world</odometrySource>
+      <publishOdomTF>true</publishOdomTF>
+      <publishWheelJointState>true</publishWheelJointState>
+      <broadcastTF>true</broadcastTF>
+    </plugin>
+  </gazebo>
+  <!-- Base link -->
+  <link name="base_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.3 0.3 0.15"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.3 0.3 0.15"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="3.0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+      <inertia ixx="0.028125" ixy="0.0" ixz="0.0" iyy="0.045" iyz="0.0" izz="0.028125"/>
+    </inertial>
+  </link>
+  <!-- Right front wheel -->
+  <link name="right_front_wheel">
+    <visual>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.05"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.000833333333333" ixy="0.0" ixz="0.0" iyy="0.000833333333333" iyz="0.0" izz="0.00125"/>
+    </inertial>
+  </link>
+  <joint name="right_front_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_front_wheel"/>
+    <origin rpy="0 0 0" xyz="0.1 -0.17 -0.06"/>
+    <axis xyz="0 1 0"/>
+    <dynamics damping="0.0"/>
+  </joint>
+  <!-- Right back wheel -->
+  <link name="right_back_wheel">
+    <visual>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.05"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.000833333333333" ixy="0.0" ixz="0.0" iyy="0.000833333333333" iyz="0.0" izz="0.00125"/>
+    </inertial>
+  </link>
+  <joint name="right_back_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_back_wheel"/>
+    <origin rpy="0 0 0" xyz="-0.1 -0.17 -0.06"/>
+    <axis xyz="0 1 0"/>
+    <dynamics damping="0.0"/>
+  </joint>
+  <!-- Left front wheel -->
+  <link name="left_front_wheel">
+    <visual>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.05"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.000833333333333" ixy="0.0" ixz="0.0" iyy="0.000833333333333" iyz="0.0" izz="0.00125"/>
+    </inertial>
+  </link>
+  <joint name="left_front_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_front_wheel"/>
+    <origin rpy="0 0 0" xyz="0.1 0.17 -0.06"/>
+    <axis xyz="0 1 0"/>
+    <dynamics damping="0.0"/>
+  </joint>
+  <!-- Left back wheel -->
+  <link name="left_back_wheel">
+    <visual>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.05"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.000833333333333" ixy="0.0" ixz="0.0" iyy="0.000833333333333" iyz="0.0" izz="0.00125"/>
+    </inertial>
+  </link>
+  <joint name="left_back_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_back_wheel"/>
+    <origin rpy="0 0 0" xyz="-0.1 0.17 -0.06"/>
+    <axis xyz="0 1 0"/>
+    <dynamics damping="0.0"/>
+  </joint>
+  <link name="laserscan">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.05 0.05"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.05 0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="4.16666666667e-05" ixy="0.0" ixz="0.0" iyy="4.16666666667e-05" iyz="0.0" izz="4.16666666667e-05"/>
+    </inertial>
+  </link>
+  <joint name="laserscan_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="laserscan"/>
+    <origin rpy="0 0 0" xyz="0.1 0 0.10"/>
+  </joint>
 </robot>
+
