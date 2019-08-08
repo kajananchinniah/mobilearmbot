@@ -3,6 +3,7 @@
 
 	<xacro:include filename="$(find mobilearmbot_description)/urdf/colours.xacro"/>
 	<xacro:include filename="$(find mobilearmbot_description)/urdf/mobilearmbot.gazebo.xacro"/> 
+	<xacro:include filename="$(find mobilearmbot_description)/urdf/inertias.xacro"/>
 
 	<!-- Constants for drivebase -->
 	<xacro:property name="base_length" value="0.3"/>
@@ -34,10 +35,7 @@
 		</collision>
 		<inertial>
 			<mass value="${wheel_mass}"/>
-			<inertia ixx="${wheel_mass * (3*wheel_diam*wheel_diam/4.0 + wheel_length*wheel_length)/12.0}" 
-				ixy="0.0" ixz="0.0" 
-				iyy="${wheel_mass * (3*wheel_diam*wheel_diam/4.0 + wheel_length*wheel_length)/12.0}" 
-				iyz="0.0" izz="${0.5*wheel_mass*wheel_diam*wheel_diam/4.0}"/>
+			<xacro:cylinder_inertia mass="${wheel_mass}" length="${wheel_length}" radius="${wheel_diam/2.0}"/>
 		</inertial>
 	</xacro:macro>
 
@@ -48,8 +46,11 @@
 	<xacro:property name="scan_mass" value="0.1"/>
 
 	<!-- Constants for links -->
-	<xacro:property name="link1_length" value="0.5"/>
-	<xacro:property name="link1_radius" value="0.05"/>
+	<xacro:property name="link_radii" value="0.05"/> <!-- All links will have the same radius -->
+	<xacro:property name="arm_link1_length" value="0.3"/>
+	<xacro:property name="arm_link2_length" value="0.4"/>
+	<xacro:property name="arm_link1_mass" value="1.2"/>
+	<xacro:property name="arm_link2_mass" value="1.6"/>
 
 	<!-- Base link --> 
 	<link name="base_link">
@@ -68,11 +69,7 @@
 		</collision>
 		<inertial>
 			<mass value="${base_mass}"/>
-			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
-			<inertia ixx="${base_mass * (base_height*base_height + base_length*base_length)/12.0}" 
-				ixy="0.0" ixz="0.0" 
-				iyy="${base_mass * (base_width*base_width + base_length*base_length)/12.0}" 
-				iyz="0.0" izz="${base_mass * (base_width*base_width + base_height*base_height)/12.0}"/>
+			<xacro:box_inertia mass="${base_mass}" length="${base_length}" width="${base_width}" height="${base_height}"/>
 		</inertial>	
 	</link>
 
@@ -124,7 +121,7 @@
 		<dynamics damping="${wheel_df}"/>
 	</joint>
 
-	<link name="laserscan">
+	<link name="base_scan">
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
@@ -140,15 +137,13 @@
 		</collision>
 		<inertial>
 			<mass value="${scan_mass}"/>
-                        <inertia ixx="${scan_mass * (scan_height*scan_height + scan_length*scan_length)/12.0}" 
-                                ixy="0.0" ixz="0.0" 
-                                iyy="${scan_mass * (scan_width*scan_width + scan_length*scan_length)/12.0}" 
-                                iyz="0.0" izz="${scan_mass * (scan_width*scan_width + scan_height*scan_height)/12.0}"/>
+			<xacro:box_inertia mass="${scan_mass}" length="${scan_length}" width="${scan_width}" height="${scan_height}"/>
 		</inertial>
 	</link>
-	<joint name="laserscan_joint" type="fixed">
+	<joint name="base_scan_joint" type="fixed">
 		<parent link="base_link"/>
-		<child link="laserscan"/>
+		<child link="base_scan"/>
 		<origin xyz="0.1 0 0.10" rpy="0 0 0"/>
 	</joint>
+
 </robot>

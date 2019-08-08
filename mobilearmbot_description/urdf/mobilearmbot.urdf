@@ -28,9 +28,9 @@
   <gazebo reference="left_back_wheel">
     <material>Gazebo/Black</material>
   </gazebo>
-  <gazebo reference="laserscan">
+  <gazebo reference="base_scan">
     <material>Gazebo/Black</material>
-    <sensor name="laserscan1" type="ray">
+    <sensor name="laserscan" type="ray">
       <pose>0 0 0 0 0 0</pose>
       <visualize>false</visualize>
       <update_rate>10</update_rate>
@@ -210,7 +210,7 @@
     <axis xyz="0 1 0"/>
     <dynamics damping="0.0"/>
   </joint>
-  <link name="laserscan">
+  <link name="base_scan">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -229,10 +229,52 @@
       <inertia ixx="4.16666666667e-05" ixy="0.0" ixz="0.0" iyy="4.16666666667e-05" iyz="0.0" izz="4.16666666667e-05"/>
     </inertial>
   </link>
-  <joint name="laserscan_joint" type="fixed">
+  <joint name="base_scan_joint" type="fixed">
     <parent link="base_link"/>
-    <child link="laserscan"/>
-    <origin rpy="0 0 0" xyz="0.1 0 0.10"/>
+    <child link="base_scan"/>
+    <origin rpy="0 0 0" xyz="0.1 0 0.1"/>
   </joint>
+
+  <link name="arm_link1">
+	<visual>
+		<origin rpy="0 0 0" xyz="0 0 0.15"/>
+		<geometry>
+			<cylinder length="0.3" radius="0.05"/>
+		</geometry>
+	</visual>
+	<collision>
+		<origin rpy="0 0 0" xyz="0 0 0.15"/>
+		<geometry>
+			<cylinder length="0.3" radius="0.05"/>
+		</geometry>
+	</collision>
+	<inertial>
+		<mass value="0.1"/>
+		<inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+	</inertial>
+  </link>	
+
+  <joint name="arm_link1_joint" type="continuous">
+	  <parent link="base_link"/>
+	  <child link="arm_link1"/>
+	  <origin rpy="0 0 0" xyz="0 0 0.075"/>
+	  <axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="arm_link2">
+	  <visual>
+		  <geometry>
+			  <cylinder length="0.4" radius="0.05"/>
+		  </geometry>
+		  <origin rpy="0 0 0" xyz="0 0 0.2"/>
+	  </visual>
+  </link>
+  <joint name="arm_link2_joint" type="continuous">
+	  <axis xyz="0 1 0"/>
+	  <parent link="arm_link1"/>
+	  <child link="arm_link2"/>
+	  <origin rpy="0 1.57 0" xyz="0 -0.1 0.3"/>
+  </joint>
+
 </robot>
 

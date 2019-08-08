@@ -21,9 +21,9 @@
                 <material>Gazebo/Black</material>
 	</gazebo>
     
-	<gazebo reference="laserscan">
+	<gazebo reference="base_scan">
                 <material>Gazebo/Black</material>
-                <sensor type="ray" name="laserscan1">
+                <sensor type="ray" name="laserscan">
                         <pose>0 0 0 0 0 0</pose>
                         <visualize>false</visualize>
                         <update_rate>10</update_rate>
