@@ -27,4 +27,8 @@
     <param name="publish_frequency" type="double" value="30.0" />
   </node>
 
+<rosparam file="$(find mobilearmbot_description)/config/config.yaml" command="load"/>
+
+<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+<node name="controller_spawner" pkg="controller_manager" type="spawner" args="arm_controller"/>
 </launch>

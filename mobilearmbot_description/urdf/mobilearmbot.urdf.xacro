@@ -51,6 +51,18 @@
 	<xacro:property name="arm_link2_length" value="0.4"/>
 	<xacro:property name="arm_link1_mass" value="1.2"/>
 	<xacro:property name="arm_link2_mass" value="1.6"/>
+	
+	<xacro:macro name="Transmission" params="joint n">
+		<transmission name="tran${n}">
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="${joint}">
+				<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+			</joint>
+			<actuator name="motor${n}">
+				<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+			</actuator>
+		</transmission>
+	</xacro:macro>
 
 	<!-- Base link --> 
 	<link name="base_link">
@@ -143,7 +155,59 @@
 	<joint name="base_scan_joint" type="fixed">
 		<parent link="base_link"/>
 		<child link="base_scan"/>
-		<origin xyz="0.1 0 0.10" rpy="0 0 0"/>
+		<origin xyz="0.1 0 ${scan_height/2.0 + base_height/2.0}" rpy="0 0 0"/>
 	</joint>
 
+	<link name="arm_link1">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 ${arm_link1_length/2.0}"/>
+			<geometry>
+				<cylinder length="${arm_link1_length}" radius="${link_radii}"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0 0 ${arm_link1_length/2.0}"/>
+			<geometry>
+				<cylinder length="${arm_link1_length}" radius="${link_radii}"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<mass value="${arm_link1_mass}"/>
+			<xacro:cylinder_inertia mass="${arm_link1_mass}" length="${arm_link1_length}" radius="${link_radii}"/>
+		</inertial>
+	</link>
+	<joint name="arm_link1_joint" type="continuous">
+		<parent link="base_link"/>
+		<child link="arm_link1"/>
+		<origin rpy="0 0 0" xyz="0 0 ${base_height/2.0}"/>
+		<axis xyz="0 0 1"/>
+	</joint>
+	<xacro:Transmission joint="arm_link1_joint" n="0"/>
+
+	<link name="arm_link2">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 ${arm_link2_length/2.0}"/>
+			<geometry>
+				<cylinder length="${arm_link2_length}" radius="${link_radii}"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0 0 ${arm_link2_length/2.0}"/>
+			<geometry>
+				<cylinder length="${arm_link2_length}" radius="${link_radii}"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<mass value="${arm_link2_mass}"/>
+			<xacro:cylinder_inertia mass="${arm_link2_mass}" length="${arm_link2_length}" radius="${link_radii}"/>
+		</inertial>
+	</link>
+
+	<joint name="arm_link2_joint" type="continuous">
+		<parent link="arm_link1"/>
+		<child link="arm_link2"/>
+		<origin rpy="0 ${pi/2} 0" xyz="0 0 ${arm_link1_length}"/>
+		<axis xyz="0 1 0"/>
+	</joint>
+	<xacro:Transmission joint="arm_link2_joint" n="1"/>
 </robot>
