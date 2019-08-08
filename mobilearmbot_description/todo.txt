@@ -1,2 +1,5 @@
 TODO in this folder:
-- Add the manipulator
+- Figure out how to control the current arm
+- Add an end effector (probably a claw)
+- Add an IMU
+
