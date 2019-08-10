@@ -45,12 +45,14 @@
 	<xacro:property name="scan_height" value="0.05"/>
 	<xacro:property name="scan_mass" value="0.1"/>
 
-	<!-- Constants for links -->
+	<!-- Constants for arm links -->
 	<xacro:property name="link_radii" value="0.05"/> <!-- All links will have the same radius -->
 	<xacro:property name="arm_link1_length" value="0.3"/>
 	<xacro:property name="arm_link2_length" value="0.4"/>
 	<xacro:property name="arm_link1_mass" value="1.2"/>
 	<xacro:property name="arm_link2_mass" value="1.6"/>
+	<xacro:property name="arm_link3_length" value="0.2"/>
+	<xacro:property name="arm_link3_mass" value="0.8"/>
 	
 	<xacro:macro name="Transmission" params="joint n">
 		<transmission name="tran${n}">
@@ -63,6 +65,12 @@
 			</actuator>
 		</transmission>
 	</xacro:macro>
+
+	<!-- Constants for end effector -->
+	<xacro:property name="end_effector_length" value="0.1"/>
+	<xacro:property name="end_effector_width" value="0.05"/>
+	<xacro:property name="end_effector_height" value="0.01"/>
+	<xacro:property name="end_effector_mass" value="0.1"/>
 
 	<!-- Base link --> 
 	<link name="base_link">
@@ -179,7 +187,7 @@
 	<joint name="arm_link1_joint" type="continuous">
 		<parent link="base_link"/>
 		<child link="arm_link1"/>
-		<origin rpy="0 0 0" xyz="0 0 ${base_height/2.0}"/>
+		<origin rpy="0 0 0" xyz="${-base_height/2.0} 0 ${base_height/2.0}"/>
 		<axis xyz="0 0 1"/>
 	</joint>
 	<xacro:Transmission joint="arm_link1_joint" n="0"/>
@@ -210,4 +218,85 @@
 		<axis xyz="0 1 0"/>
 	</joint>
 	<xacro:Transmission joint="arm_link2_joint" n="1"/>
+
+	<link name="arm_link3">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 ${arm_link3_length/2.0}"/>
+			<geometry>
+				<cylinder length="${arm_link3_length}" radius="${link_radii}"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0 0 ${arm_link3_length/2.0}"/>
+			<geometry>
+				<cylinder length="${arm_link3_length}" radius="${link_radii}"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<mass value="${arm_link3_mass}"/>
+			<xacro:cylinder_inertia mass="${arm_link3_mass}" length="${arm_link3_length}" radius="${link_radii}"/>
+		</inertial>
+	</link>
+	<joint name="arm_link3_joint" type="continuous">
+		<parent link="arm_link2"/>
+		<child link="arm_link3"/>
+		<origin rpy="0 ${pi/2} 0" xyz="0 0 ${arm_link2_length}"/>
+		<axis xyz="0 1 0"/>
+	</joint>
+	<xacro:Transmission joint="arm_link3_joint" n="2"/>
+
+	<link name="left_end_effector">
+		<visual>
+			<origin rpy="${pi/2} ${pi/2} 0" xyz="0 0 ${end_effector_length/2}"/>
+			<geometry>
+				<box size="${end_effector_length} ${end_effector_width} ${end_effector_height}"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="${pi/2} ${pi/2} 0" xyz="0 0 ${end_effector_length/2}"/>
+			<geometry>
+				<box size="${end_effector_length} ${end_effector_width} ${end_effector_height}"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<mass value="${end_effector_mass}"/>
+			<xacro:box_inertia mass="${end_effector_mass}" length="${end_effector_length}" width="${end_effector_width}" height="${end_effector_height}"/>
+		</inertial>
+	</link>
+
+	<joint name="left_end_effector_joint" type="continuous">
+		<parent link="arm_link3"/>
+		<child link="left_end_effector"/>
+		<origin rpy="0 0 0" xyz="0 ${link_radii} ${arm_link3_length}"/>
+		<axis xyz="0 1 0"/>
+	</joint>
+	<xacro:Transmission joint="left_end_effector_joint" n="3"/>
+
+	<link name="right_end_effector">
+		<visual>
+			<origin rpy="${pi/2} ${pi/2} 0" xyz="0 0 ${end_effector_length/2}"/>
+			<geometry>
+				<box size="${end_effector_length} ${end_effector_width} ${end_effector_height}"/>
+			</geometry>
+		</visual>
+		<collision>
+                        <origin rpy="${pi/2} ${pi/2} 0" xyz="0 0 ${end_effector_length/2}"/>
+                        <geometry>
+                                <box size="${end_effector_length} ${end_effector_width} ${end_effector_height}"/>
+                        </geometry>
+		</collision>
+                <inertial>
+                        <mass value="${end_effector_mass}"/>
+                        <xacro:box_inertia mass="${end_effector_mass}" length="${end_effector_length}" width="${end_effector_width}" height="${end_effector_height}"/>
+                </inertial>
+	</link>
+
+	<joint name="right_end_effector_joint" type="continuous">
+		<parent link="arm_link3"/>
+		<child link="right_end_effector"/>
+		<origin rpy="0 0 0" xyz="0 ${-link_radii} ${arm_link3_length}"/>
+		<axis xyz="0 1 0"/>
+	</joint>
+	<xacro:Transmission joint="right_end_effector_joint" n="4"/>
+
 </robot>

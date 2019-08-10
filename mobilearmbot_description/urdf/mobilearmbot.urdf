@@ -81,6 +81,11 @@
       <broadcastTF>true</broadcastTF>
     </plugin>
   </gazebo>
+  <gazebo>
+    <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
+      <robotNamespace>/</robotNamespace>
+    </plugin>
+  </gazebo>
   <!-- Base link -->
   <link name="base_link">
     <visual>
@@ -257,12 +262,12 @@
     <origin rpy="0 0 0" xyz="0 0 0.075"/>
     <axis xyz="0 0 1"/>
   </joint>
-  <transmission name="tran_arm_link1_joint">
+  <transmission name="tran0">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="arm_link1_joint">
       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
-    <actuator name="motor_arm_link1_joint">
+    <actuator name="motor0">
       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </actuator>
   </transmission>
@@ -290,12 +295,91 @@
     <origin rpy="0 1.57075 0" xyz="0 0 0.3"/>
     <axis xyz="0 1 0"/>
   </joint>
-  <transmission name="tran_arm_link2_joint">
+  <transmission name="tran1">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="arm_link2_joint">
       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
-    <actuator name="motor_arm_link2_joint">
+    <actuator name="motor1">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+  <link name="arm_link3">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.1"/>
+      <geometry>
+        <cylinder length="0.2" radius="0.05"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.1"/>
+      <geometry>
+        <cylinder length="0.2" radius="0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.8"/>
+      <inertia ixx="0.00316666666667" ixy="0.0" ixz="0.0" iyy="0.00316666666667" iyz="0.0" izz="0.001"/>
+    </inertial>
+  </link>
+  <joint name="arm_link3_joint" type="continuous">
+    <parent link="arm_link2"/>
+    <child link="arm_link3"/>
+    <origin rpy="0 1.57075 0" xyz="0 0 0.4"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="arm_link3_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+  <link name="left_end_effector">
+    <visual>
+      <origin rpy="1.57075 1.57075 0" xyz="0 0 0.05"/>
+      <geometry>
+        <box size="0.1 0.05 0.01"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="left_end_effector_joint" type="continuous">
+    <parent link="arm_link3"/>
+    <child link="left_end_effector"/>
+    <origin rpy="0 0 0" xyz="0 0.05 0.2"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_end_effector_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+  <link name="right_end_effector">
+    <visual>
+      <origin rpy="1.57075 1.57075 0" xyz="0 0 0.05"/>
+      <geometry>
+        <box size="0.1 0.05 0.01"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="right_end_effector_joint" type="continuous">
+    <parent link="arm_link3"/>
+    <child link="right_end_effector"/>
+    <origin rpy="0 0 0" xyz="0 -0.05 0.2"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="right_end_effector_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </actuator>
   </transmission>

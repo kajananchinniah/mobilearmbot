@@ -20,6 +20,26 @@
         <gazebo reference="left_back_wheel">
                 <material>Gazebo/Black</material>
 	</gazebo>
+
+	<gazebo reference="arm_link1">
+		<material>Gazebo/Black</material>
+	</gazebo>
+
+	<gazebo reference="arm_link2">
+		<material>Gazebo/Black</material>
+	</gazebo>
+
+	<gazebo reference="arm_link3">
+		<material>Gazebo/Black</material>
+	</gazebo>
+
+	<gazebo reference="left_end_effector">
+		<material>Gazebo/Grey</material>
+	</gazebo>
+
+	<gazebo reference="right_end_effector">
+		<material>Gazebo/Grey</material>
+	</gazebo>
     
 	<gazebo reference="base_scan">
                 <material>Gazebo/Black</material>
