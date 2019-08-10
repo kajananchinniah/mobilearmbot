@@ -27,4 +27,4 @@ class MobileArmBotDrive
 
       void laserScanCallback(const sensor_msgs::LaserScan &scanned_msg);
       void mobilearmbot_drive_controller(float dist, float angle);
-}
+};
