@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: mobilearmbot_description
+    relative_path: urdf/mobilearmbot.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/mobilearmbot.srdf
+  CONFIG:
+    author_name: kajanan chinniah
+    author_email: kajananchinniah@gmail.com
+    generated_timestamp: 1565402421

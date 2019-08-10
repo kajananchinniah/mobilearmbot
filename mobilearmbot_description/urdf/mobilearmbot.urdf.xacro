@@ -268,7 +268,7 @@
 		<parent link="arm_link3"/>
 		<child link="left_end_effector"/>
 		<origin rpy="0 0 0" xyz="0 ${link_radii} ${arm_link3_length}"/>
-		<axis xyz="0 1 0"/>
+		<axis xyz="1 0 0"/>
 	</joint>
 	<xacro:Transmission joint="left_end_effector_joint" n="3"/>
 
@@ -295,7 +295,7 @@
 		<parent link="arm_link3"/>
 		<child link="right_end_effector"/>
 		<origin rpy="0 0 0" xyz="0 ${-link_radii} ${arm_link3_length}"/>
-		<axis xyz="0 1 0"/>
+		<axis xyz="1 0 0"/>
 	</joint>
 	<xacro:Transmission joint="right_end_effector_joint" n="4"/>
 
