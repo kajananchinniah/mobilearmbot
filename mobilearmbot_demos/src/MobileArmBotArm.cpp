@@ -38,21 +38,54 @@
 
 #include "MobileArmBotArm.hpp"
 
+MobileArmBotArm::MobileArmBotArm(ros::NodeHandle nh)
+{
+   this->nh = nh;
+   this->n_objects_to_grasp = 1;
+   this->grasps.resize(this->n_objects_to_grasp);
+}
+
 void openEndEffector(trajectory_msgs::JointTrajectory& posture)
 {
+   //Add end effector joints
+   posture.joint_names.resize(2);
+   posture.joint_names[0] = "left_end_effector_joint";
+   posture.joint_names[1] = "right_end_effector_joint";
 
-
+   //Open them
+   posture.points.resize(1);
+   posture.points[0].positions.resize(2);
+   posture.points[0].positions[0] = 0.04; //TODO: change these values
+   posture.points[0].positions[1] = 0.04;
+   posture.points[0].time_from_start = ros::Duration(0.5);
 }
 
 void closeEndEffector(trajectory_msgs::JointTrajectory& posture)
 {
+  //Add end effector joints
+  posture.joint_names.resize(2);
+  posture.joint_names[0] = "left_end_effector_joint";
+  posture.joint_names[1] = "right_end_effector_joint";
 
-
+  //Close them
+  posture.points.resize(1);
+  posture.points[0].positions.resize(2);
+  posture.points[0].positions[0] = 0.00; //TODO: changes these values
+  posture.points[0].positions[1] = 0.00;
+  posture.points[0].time_from_start = ros::Duration(0.5);
 }
 
-void pick(moveit::planning_interface::MoveGroupINterface& move_group)
+void pick(moveit::planning_interface::MoveGroupInterface& move_group)
 {
-
-
+   return;
 }
 
+void place(moveit::planning_interface::MoveGroupInterface& group)
+{
+   return;
+}
+
+void addCollisionObjects(moveit::planning_interface::PlanningSceneInterface& planning_scene_interface)
+{
+   return;
+}
