@@ -53,15 +53,17 @@
 	<xacro:property name="arm_link2_mass" value="1.6"/>
 	<xacro:property name="arm_link3_length" value="0.2"/>
 	<xacro:property name="arm_link3_mass" value="0.8"/>
-	
-	<xacro:macro name="Transmission" params="joint n">
-		<transmission name="tran${n}">
+
+	<!-- this is used wherever necessary for all joints -->	
+	<xacro:macro name="Transmission" params="joint">
+		<transmission name="trans_${joint}">
 			<type>transmission_interface/SimpleTransmission</type>
 			<joint name="${joint}">
 				<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
 			</joint>
-			<actuator name="motor${n}">
+			<actuator name="${joint}_motor">
 				<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
 			</actuator>
 		</transmission>
 	</xacro:macro>
@@ -104,6 +106,7 @@
 		<axis xyz="0 1 0"/>
 		<dynamics damping="${wheel_df}"/>
 	</joint>
+	<xacro:Transmission joint="right_front_wheel_joint"/>
 
 	<!-- Right back wheel -->
 	<link name="right_back_wheel">
@@ -116,6 +119,7 @@
 		<axis xyz="0 1 0"/>
 		<dynamics damping="${wheel_df}"/>
 	</joint>
+	<xacro:Transmission joint="right_back_wheel_joint"/>
 
 	<!-- Left front wheel -->
 	<link name="left_front_wheel">
@@ -128,6 +132,7 @@
 		<axis xyz="0 1 0"/>
 		<dynamics damping="${wheel_df}"/>
 	</joint>
+	<xacro:Transmission joint="left_front_wheel_joint"/>
 
 	<!-- Left back wheel -->
 	<link name="left_back_wheel">
@@ -140,6 +145,7 @@
 		<axis xyz="0 1 0"/>
 		<dynamics damping="${wheel_df}"/>
 	</joint>
+	<xacro:Transmission joint="left_back_wheel_joint"/>
 
 	<link name="base_scan">
 		<visual>
@@ -190,7 +196,7 @@
 		<origin rpy="0 0 0" xyz="${-base_height/2.0} 0 ${base_height/2.0}"/>
 		<axis xyz="0 0 1"/>
 	</joint>
-	<xacro:Transmission joint="arm_link1_joint" n="0"/>
+	<xacro:Transmission joint="arm_link1_joint"/>
 
 	<link name="arm_link2">
 		<visual>
@@ -217,7 +223,7 @@
 		<origin rpy="0 ${pi/2} 0" xyz="0 0 ${arm_link1_length}"/>
 		<axis xyz="0 1 0"/>
 	</joint>
-	<xacro:Transmission joint="arm_link2_joint" n="1"/>
+	<xacro:Transmission joint="arm_link2_joint"/>
 
 	<link name="arm_link3">
 		<visual>
@@ -243,7 +249,7 @@
 		<origin rpy="0 ${pi/2} 0" xyz="0 0 ${arm_link2_length}"/>
 		<axis xyz="0 1 0"/>
 	</joint>
-	<xacro:Transmission joint="arm_link3_joint" n="2"/>
+	<xacro:Transmission joint="arm_link3_joint"/>
 
 	<link name="left_end_effector">
 		<visual>
@@ -270,7 +276,7 @@
 		<origin rpy="0 0 0" xyz="0 ${link_radii} ${arm_link3_length}"/>
 		<axis xyz="1 0 0"/>
 	</joint>
-	<xacro:Transmission joint="left_end_effector_joint" n="3"/>
+	<xacro:Transmission joint="left_end_effector_joint"/>
 
 	<link name="right_end_effector">
 		<visual>
@@ -297,6 +303,5 @@
 		<origin rpy="0 0 0" xyz="0 ${-link_radii} ${arm_link3_length}"/>
 		<axis xyz="1 0 0"/>
 	</joint>
-	<xacro:Transmission joint="right_end_effector_joint" n="4"/>
-
+	<xacro:Transmission joint="right_end_effector_joint"/>
 </robot>

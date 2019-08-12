@@ -152,6 +152,16 @@
         <axis xyz="0 1 0" />
         <dynamics damping="0.0" />
     </joint>
+    <transmission name="trans_right_front_wheel_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="right_front_wheel_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="right_front_wheel_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
     <!-- Right back wheel -->
     <link name="right_back_wheel">
         <visual>
@@ -181,6 +191,16 @@
         <axis xyz="0 1 0" />
         <dynamics damping="0.0" />
     </joint>
+    <transmission name="trans_right_back_wheel_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="right_back_wheel_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="right_back_wheel_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
     <!-- Left front wheel -->
     <link name="left_front_wheel">
         <visual>
@@ -210,6 +230,16 @@
         <axis xyz="0 1 0" />
         <dynamics damping="0.0" />
     </joint>
+    <transmission name="trans_left_front_wheel_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="left_front_wheel_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="left_front_wheel_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
     <!-- Left back wheel -->
     <link name="left_back_wheel">
         <visual>
@@ -239,6 +269,16 @@
         <axis xyz="0 1 0" />
         <dynamics damping="0.0" />
     </joint>
+    <transmission name="trans_left_back_wheel_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="left_back_wheel_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="left_back_wheel_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
     <link name="base_scan">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0" />
@@ -291,13 +331,14 @@
         <origin rpy="0 0 0" xyz="-0.075 0 0.075" />
         <axis xyz="0 0 1" />
     </joint>
-    <transmission name="tran0">
+    <transmission name="trans_arm_link1_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="arm_link1_joint">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
-        <actuator name="motor0">
+        <actuator name="arm_link1_joint_motor">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <link name="arm_link2">
@@ -326,13 +367,14 @@
         <origin rpy="0 1.57075 0" xyz="0 0 0.3" />
         <axis xyz="0 1 0" />
     </joint>
-    <transmission name="tran1">
+    <transmission name="trans_arm_link2_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="arm_link2_joint">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
-        <actuator name="motor1">
+        <actuator name="arm_link2_joint_motor">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <link name="arm_link3">
@@ -361,13 +403,14 @@
         <origin rpy="0 1.57075 0" xyz="0 0 0.4" />
         <axis xyz="0 1 0" />
     </joint>
-    <transmission name="tran2">
+    <transmission name="trans_arm_link3_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="arm_link3_joint">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
-        <actuator name="motor2">
+        <actuator name="arm_link3_joint_motor">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <link name="left_end_effector">
@@ -396,13 +439,14 @@
         <origin rpy="0 0 0" xyz="0 0.05 0.2" />
         <axis xyz="1 0 0" />
     </joint>
-    <transmission name="tran3">
+    <transmission name="trans_left_end_effector_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="left_end_effector_joint">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
-        <actuator name="motor3">
+        <actuator name="left_end_effector_joint_motor">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <link name="right_end_effector">
@@ -431,13 +475,14 @@
         <origin rpy="0 0 0" xyz="0 -0.05 0.2" />
         <axis xyz="1 0 0" />
     </joint>
-    <transmission name="tran4">
+    <transmission name="trans_right_end_effector_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="right_end_effector_joint">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
-        <actuator name="motor4">
+        <actuator name="right_end_effector_joint_motor">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <transmission name="trans_right_front_wheel_joint">
@@ -483,30 +528,30 @@
     <transmission name="trans_arm_link1_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="arm_link1_joint">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="arm_link1_joint_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <transmission name="trans_arm_link2_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="arm_link2_joint">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="arm_link2_joint_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <transmission name="trans_arm_link3_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="arm_link3_joint">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="arm_link3_joint_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
@@ -537,13 +582,183 @@
     </gazebo>
 </robot>
 
-<transmission name="tran0">
+<transmission name="trans_right_front_wheel_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="right_front_wheel_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="right_front_wheel_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <!-- Right back wheel -->
+    <link name="right_back_wheel">
+        <visual>
+            <origin rpy="1.57075 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.05" radius="0.05" />
+            </geometry>
+            <material name="black" />
+        </visual>
+        <collision>
+            <origin rpy="1.57075 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.05" radius="0.05" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1" />
+            <inertia ixx="0.000833333333333" ixy="0.0" ixz="0.0" iyy="0.000833333333333" iyz="0.0" izz="0.00125" />
+        </inertial>
+    </link>
+    <joint name="right_back_wheel_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="right_back_wheel" />
+        <origin rpy="0 0 0" xyz="-0.1 -0.17 -0.06" />
+        <axis xyz="0 1 0" />
+        <dynamics damping="0.0" />
+    </joint>
+    <transmission name="trans_right_back_wheel_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="right_back_wheel_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="right_back_wheel_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <!-- Left front wheel -->
+    <link name="left_front_wheel">
+        <visual>
+            <origin rpy="1.57075 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.05" radius="0.05" />
+            </geometry>
+            <material name="black" />
+        </visual>
+        <collision>
+            <origin rpy="1.57075 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.05" radius="0.05" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1" />
+            <inertia ixx="0.000833333333333" ixy="0.0" ixz="0.0" iyy="0.000833333333333" iyz="0.0" izz="0.00125" />
+        </inertial>
+    </link>
+    <joint name="left_front_wheel_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="left_front_wheel" />
+        <origin rpy="0 0 0" xyz="0.1 0.17 -0.06" />
+        <axis xyz="0 1 0" />
+        <dynamics damping="0.0" />
+    </joint>
+    <transmission name="trans_left_front_wheel_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="left_front_wheel_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="left_front_wheel_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <!-- Left back wheel -->
+    <link name="left_back_wheel">
+        <visual>
+            <origin rpy="1.57075 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.05" radius="0.05" />
+            </geometry>
+            <material name="black" />
+        </visual>
+        <collision>
+            <origin rpy="1.57075 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.05" radius="0.05" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1" />
+            <inertia ixx="0.000833333333333" ixy="0.0" ixz="0.0" iyy="0.000833333333333" iyz="0.0" izz="0.00125" />
+        </inertial>
+    </link>
+    <joint name="left_back_wheel_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="left_back_wheel" />
+        <origin rpy="0 0 0" xyz="-0.1 0.17 -0.06" />
+        <axis xyz="0 1 0" />
+        <dynamics damping="0.0" />
+    </joint>
+    <transmission name="trans_left_back_wheel_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="left_back_wheel_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="left_back_wheel_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <link name="base_scan">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.05 0.05 0.05" />
+            </geometry>
+            <material name="blue" />
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.05 0.05 0.05" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.1" />
+            <inertia ixx="4.16666666667e-05" ixy="0.0" ixz="0.0" iyy="4.16666666667e-05" iyz="0.0" izz="4.16666666667e-05" />
+        </inertial>
+    </link>
+    <joint name="base_scan_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="base_scan" />
+        <origin rpy="0 0 0" xyz="0.1 0 0.1" />
+    </joint>
+    <link name="arm_link1">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0.15" />
+            <geometry>
+                <cylinder length="0.3" radius="0.05" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0.15" />
+            <geometry>
+                <cylinder length="0.3" radius="0.05" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1.2" />
+            <inertia ixx="0.00975" ixy="0.0" ixz="0.0" iyy="0.00975" iyz="0.0" izz="0.0015" />
+        </inertial>
+    </link>
+    <joint name="arm_link1_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="arm_link1" />
+        <origin rpy="0 0 0" xyz="-0.075 0 0.075" />
+        <axis xyz="0 0 1" />
+    </joint>
+    <transmission name="trans_arm_link1_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="arm_link1_joint">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
-        <actuator name="motor0">
+        <actuator name="arm_link1_joint_motor">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <link name="arm_link2">
@@ -570,13 +785,14 @@
         <origin rpy="0 1.57075 0" xyz="0 0 0.3" />
         <axis xyz="0 1 0" />
     </joint>
-    <transmission name="tran1">
+    <transmission name="trans_arm_link2_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="arm_link2_joint">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
-        <actuator name="motor1">
+        <actuator name="arm_link2_joint_motor">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <link name="arm_link3">
@@ -603,13 +819,14 @@
         <origin rpy="0 1.57075 0" xyz="0 0 0.4" />
         <axis xyz="0 1 0" />
     </joint>
-    <transmission name="tran2">
+    <transmission name="trans_arm_link3_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="arm_link3_joint">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
-        <actuator name="motor2">
+        <actuator name="arm_link3_joint_motor">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <link name="left_end_effector">
@@ -636,13 +853,14 @@
         <origin rpy="0 0 0" xyz="0 0.05 0.2" />
         <axis xyz="1 0 0" />
     </joint>
-    <transmission name="tran3">
+    <transmission name="trans_left_end_effector_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="left_end_effector_joint">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
-        <actuator name="motor3">
+        <actuator name="left_end_effector_joint_motor">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <link name="right_end_effector">
@@ -669,13 +887,14 @@
         <origin rpy="0 0 0" xyz="0 -0.05 0.2" />
         <axis xyz="1 0 0" />
     </joint>
-    <transmission name="tran4">
+    <transmission name="trans_right_end_effector_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="right_end_effector_joint">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
-        <actuator name="motor4">
+        <actuator name="right_end_effector_joint_motor">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <transmission name="trans_right_front_wheel_joint">
@@ -721,30 +940,30 @@
     <transmission name="trans_arm_link1_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="arm_link1_joint">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="arm_link1_joint_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <transmission name="trans_arm_link2_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="arm_link2_joint">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="arm_link2_joint_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <transmission name="trans_arm_link3_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="arm_link3_joint">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="arm_link3_joint_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
