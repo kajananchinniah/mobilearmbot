@@ -149,7 +149,7 @@ mobilearmbot_arm:
   projection_evaluator: joints(arm_link1_joint,arm_link2_joint)
   longest_valid_segment_fraction: 0.005
 mobilearmbot_claw:
-  default_planner_config: None
+  default_planner_config: ""
   planner_configs:
     - SBL
     - EST

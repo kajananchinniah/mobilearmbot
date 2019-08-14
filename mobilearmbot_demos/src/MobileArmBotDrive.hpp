@@ -1,8 +1,10 @@
 #pragma once
 
 #include <ros/ros.h>
+
 #include <geometry_msgs/Twist.h>
 #include <sensor_msgs/LaserScan.h>
+#include <std_msgs/Float64.h>
 
 #include <string>
 
@@ -15,6 +17,7 @@ class MobileArmBotDrive
       ros::NodeHandle nh;
       ros::Subscriber laser_sub;
       ros::Publisher cmd_vel_pub;
+//      ros::Publisher target_distance_pub;
 
       geometry_msgs::Twist vel;
       int queue_size;

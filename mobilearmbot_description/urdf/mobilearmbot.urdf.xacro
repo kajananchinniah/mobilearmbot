@@ -169,7 +169,7 @@
 	<joint name="base_scan_joint" type="fixed">
 		<parent link="base_link"/>
 		<child link="base_scan"/>
-		<origin xyz="0.1 0 ${scan_height/2.0 + base_height/2.0}" rpy="0 0 0"/>
+		<origin xyz="0.0 0 ${scan_height/2.0 + base_height/2.0}" rpy="0 0 0"/>
 	</joint>
 
 	<link name="arm_link1">
@@ -273,7 +273,7 @@
 	<joint name="left_end_effector_joint" type="continuous">
 		<parent link="arm_link3"/>
 		<child link="left_end_effector"/>
-		<origin rpy="0 0 0" xyz="0 ${link_radii} ${arm_link3_length}"/>
+		<origin rpy="${-pi/2} 0 0" xyz="0 ${link_radii} ${arm_link3_length}"/>
 		<axis xyz="1 0 0"/>
 	</joint>
 	<xacro:Transmission joint="left_end_effector_joint"/>
@@ -300,7 +300,7 @@
 	<joint name="right_end_effector_joint" type="continuous">
 		<parent link="arm_link3"/>
 		<child link="right_end_effector"/>
-		<origin rpy="0 0 0" xyz="0 ${-link_radii} ${arm_link3_length}"/>
+		<origin rpy="${pi/2} 0 0" xyz="0 ${-link_radii} ${arm_link3_length}"/>
 		<axis xyz="1 0 0"/>
 	</joint>
 	<xacro:Transmission joint="right_end_effector_joint"/>

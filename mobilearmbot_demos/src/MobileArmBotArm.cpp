@@ -43,9 +43,11 @@ MobileArmBotArm::MobileArmBotArm(ros::NodeHandle nh)
    this->nh = nh;
    this->n_objects_to_grasp = 1;
    this->grasps.resize(this->n_objects_to_grasp);
+   this->n_collision_objects = 1;
+   this->collision_objects.resize(this->n_collision_objects);
 }
 
-void openEndEffector(trajectory_msgs::JointTrajectory& posture)
+void MobileArmBotArm::openEndEffector(trajectory_msgs::JointTrajectory& posture)
 {
    //Add end effector joints
    posture.joint_names.resize(2);
@@ -60,7 +62,7 @@ void openEndEffector(trajectory_msgs::JointTrajectory& posture)
    posture.points[0].time_from_start = ros::Duration(0.5);
 }
 
-void closeEndEffector(trajectory_msgs::JointTrajectory& posture)
+void MobileArmBotArm::closeEndEffector(trajectory_msgs::JointTrajectory& posture)
 {
   //Add end effector joints
   posture.joint_names.resize(2);
@@ -75,9 +77,29 @@ void closeEndEffector(trajectory_msgs::JointTrajectory& posture)
   posture.points[0].time_from_start = ros::Duration(0.5);
 }
 
-void pick(moveit::planning_interface::MoveGroupInterface& move_group)
+void MobileArmBotArm::pick(moveit::planning_interface::MoveGroupInterface& move_group)
 {
-   return;
+   this->grasps[0].grasp_pose.header.frame_id = "";
+   this->orientation.setRPY(-M_PI/2, -M_PI/4, -M_PI/2);
+   this->grasps[0].grasp_pose.pose.orientation = tf2::toMsg(orientation);
+   this->grasps[0].grasp_pose.position.x = 0.415;
+   this->grasps[0].grasp_pose.position.y = 0;
+   this->grasps[0].grasp_pose.position.z = 0.5;
+
+   this->grasps[0].pre_grasp_approach.direction.header.frame_id = "";
+   this->grasps[0].pre_grasp_approach.direction.vector.x = 1.0;
+   this->grasps[0].pre_grasp_approach.min_distance = 0.095;
+   this->grasps[0].pre_grasp_approach.desired_distance = 0.115;
+
+   this->grasps[0].post_grasp_retreat.direction.header.frame_id = "";
+   this->grasps[0].post_grasp_retreat.direction.vector.z = 1.0;
+   this->grasps[0].post_grasp_retreat.min_distance = 0.1;
+   this->grasps[0].post_grasp_retreat.desired_distance = 0.25;
+
+   this->openGripper(this->grasps[0].pre_grasp_posture);
+
+   this->closedGripper(this->grasps[0].grasp_posture);
+   move_group.pick("", grasps);
 }
 
 void place(moveit::planning_interface::MoveGroupInterface& group)
@@ -87,5 +109,6 @@ void place(moveit::planning_interface::MoveGroupInterface& group)
 
 void addCollisionObjects(moveit::planning_interface::PlanningSceneInterface& planning_scene_interface)
 {
+   this->
    return;
 }

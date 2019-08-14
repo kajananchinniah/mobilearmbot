@@ -1,5 +1,5 @@
 <launch>
-   <arg name="model" default = "mobilearmbot_moveit_generated"/>
+   <arg name="model" default = "mobilearmbot"/>
    <arg name="gui" default="False"/>
    <param name="robot_description" textfile="$(find mobilearmbot_description)/urdf/$(arg model).urdf"/>
 

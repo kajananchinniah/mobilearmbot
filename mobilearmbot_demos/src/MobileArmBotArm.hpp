@@ -14,9 +14,14 @@ class MobileArmBotArm
       MobileArmBotArm(ros::NodeHandle nh);
    private:
       ros::NodeHandle nh;
+      ros::Subscriber closest_object_dist_sub;
+
       int n_objects_to_grasp;
+      int n_collision_objects;
       std::vector<moveit_msgs::Grasp> grasps;
-      
+      std::vector<moveit_msgs::CollisionObject> collision_objects;
+      tf2::Quaternion orientation;
+
       void openEndEffector(trajectory_msgs::JointTrajectory& posture);
       void closeEndEffector(trajectory_msgs::JointTrajectory& posture);
       void pick(moveit::planning_interface::MoveGroupInterface& move_group);
