@@ -101,6 +101,9 @@
       <robotNamespace>/</robotNamespace>
     </plugin>
   </gazebo>
+  <!-- Added for KDL -->
+  <link name="dummy">
+	</link>
   <!-- Base link -->
   <link name="base_link">
     <visual>
@@ -121,6 +124,10 @@
       <inertia ixx="0.028125" ixy="0.0" ixz="0.0" iyy="0.045" iyz="0.0" izz="0.028125"/>
     </inertial>
   </link>
+  <joint name="dummy_joint" type="fixed">
+    <parent link="dummy"/>
+    <child link="base_link"/>
+  </joint>
   <!-- Right front wheel -->
   <link name="right_front_wheel">
     <visual>

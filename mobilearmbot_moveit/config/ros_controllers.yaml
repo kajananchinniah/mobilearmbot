@@ -25,26 +25,31 @@ joint_state_controller:
   type: joint_state_controller/JointStateController
   publish_rate: 50
 controller_list:
-  []
-arm_position_controller:
-  type: position_controllers/JointPositionController
-  joints:
-    - arm_link1_joint
-    - arm_link2_joint
-    - arm_link3_joint
-  gains:
-    arm_link1_joint:
-      p: 100
-      d: 1
-      i: 1
-      i_clamp: 1
-    arm_link2_joint:
-      p: 100
-      d: 1
-      i: 1
-      i_clamp: 1
-    arm_link3_joint:
-      p: 100
-      d: 1
-      i: 1
-      i_clamp: 1
+  - name: mobilearmbot_arm_controller
+    action_ns: follow_joint_trajectory
+    default: True
+    type: FollowJointTrajectory
+    joints:
+      - arm_link1_joint
+      - arm_link2_joint
+      - arm_link3_joint
+  - name: mobilearmbot_claw_controller
+    action_ns: follow_joint_trajectory
+    default: True
+    type: FollowJointTrajectory
+    joints:
+      - left_end_effector_joint
+      - right_end_effector_joint
+  - name: arm_position_controller
+    type: position_controllers/JointPositionController
+    joints:
+      - arm_link1_joint
+      - arm_link2_joint
+      - arm_link3_joint
+    pid: {p: 0.5, i: 0.0, d: 0.0}
+  - name: claw_position_controller
+    type: position_controllers/JointPositionController
+    joints:
+      - left_end_effector_joint
+      - right_end_effector_joint
+    pid: {p: 0.5, i: 0.0, d: 0.0}

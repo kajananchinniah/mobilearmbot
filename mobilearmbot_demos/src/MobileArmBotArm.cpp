@@ -139,8 +139,8 @@ void MobileArmBotArm::addCollisionObjects(moveit::planning_interface::PlanningSc
 
    this->collision_objects[0].primitive_poses.resize(1);
    //TODO: change these values
-   this->collision_objects[0].primitive_poses[0].position.x = 0.00;
-   this->collision_objects[0].primitive_poses[0].position.y = this->closest_object_dist;
+   this->collision_objects[0].primitive_poses[0].position.x = this->closest_object_dist;
+   this->collision_objects[0].primitive_poses[0].position.y = 0.00;
    this->collision_objects[0].primitive_poses[0].position.z = 0.00;
    collision_objects[0].operation = collision_objects[0].ADD;
    planning_scene_interface.applyCollisionObjects(collision_objects);
