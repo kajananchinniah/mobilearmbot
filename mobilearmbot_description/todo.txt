@@ -1,5 +1,4 @@
 TODO in this folder:
-- Figure out how to control the current arm
-- Add an end effector (probably a claw)
-- Add an IMU
+- Figure out how to control the current arm (using moveit to do this)..
+- Add a camera
 

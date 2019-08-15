@@ -13,7 +13,7 @@ MobileArmBotDrive::MobileArmBotDrive(ros::NodeHandle nh)
 		   this);
    this->cmd_vel_pub = this->nh.advertise<geometry_msgs::Twist>("cmd_vel", 
 		   this->queue_size);
-   //this->target_distance_pub = this->nh.advertise<std_msgs::Float64>("target_distance", this->queue_size);
+   this->target_distance_pub = this->nh.advertise<std_msgs::Float32>("target_distance", this->queue_size);
 }
 
 
@@ -43,7 +43,8 @@ void MobileArmBotDrive::laserScanCallback(const sensor_msgs::LaserScan &msg)
    this->mobilearmbot_drive_controller(this->closest_target, this->heading_angle);
    ROS_INFO_STREAM("Heading Angle = " << this->heading_angle << " Vel = " << this->vel);
    this->cmd_vel_pub.publish(this->vel);
-   //this->target_distance_pub.publish(this->closest_target);
+   this->closest_target_msg.data = this->closest_target;
+   this->target_distance_pub.publish(this->closest_target_msg);
 }
 
 void MobileArmBotDrive::mobilearmbot_drive_controller(float dist, float angle)
