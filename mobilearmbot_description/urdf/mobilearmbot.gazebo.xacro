@@ -67,7 +67,8 @@
                                         <stddev>0.01</stddev>
                                 </noise>
                         </ray>
-                        <plugin name="mobilearmbot_laserscan_controller" filename="libgazebo_ros_laser.so">
+			<plugin name="mobilearmbot_laserscan_controller" filename="libgazebo_ros_laser.so">
+				<robotNamespace>/mobilearmbot</robotNamespace>
                                 <topicName>scan</topicName>
                                 <frameName>base_scan</frameName>
                         </plugin>
@@ -77,7 +78,7 @@
         <gazebo>
                 <plugin name="mobilearmbot_controller" filename="libgazebo_ros_skid_steer_drive.so">
                         <updateRate>30.0</updateRate>
-                        <robotNamespace>/</robotNamespace>
+                        <robotNamespace>/mobilearmbot</robotNamespace>
                         <leftFrontJoint>left_front_wheel_joint</leftFrontJoint>
                         <rightFrontJoint>right_front_wheel_joint</rightFrontJoint>
                         <leftRearJoint>left_back_wheel_joint</leftRearJoint>

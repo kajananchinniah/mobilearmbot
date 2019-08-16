@@ -74,10 +74,10 @@
 	<xacro:property name="end_effector_height" value="0.01"/>
 	<xacro:property name="end_effector_mass" value="0.1"/>
 
-	<!-- Fixed link -->
+	<!--Fixed Frame-->
 	<link name="odom">
 	</link>
-
+        
 	<!-- Base link --> 
 	<link name="base_link">
 		<visual>
@@ -102,7 +102,7 @@
 		<parent link="odom"/>
 		<child link="base_link"/>
 	</joint>
-
+        
 	<!-- Right front wheel -->
 	<link name="right_front_wheel">
 		<xacro:wheel_link_description />

@@ -1,4 +1,7 @@
-controller_list:
+#This file is here just in case
+#It shouldn't be used unless you plan on not using moveit
+#Configuration for this should be done your own 
+mobilearmbot:
   joint_state_controller:
     type: joint_state_controller/JointStateController
     publish_rate: 1000

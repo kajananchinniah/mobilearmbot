@@ -2,6 +2,7 @@
 
 MobileArmBotDrive::MobileArmBotDrive(ros::NodeHandle nh)
 {
+   ROS_INFO_STREAM("Executed!");
    this->queue_size = 5;
    this->laser_topic_name = "scan";
    this->kp_vel = 0.1;
