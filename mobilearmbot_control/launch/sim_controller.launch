@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-  <rosparam file="$(find mobilearmbot_controller)/config/sim_controller.yaml" command="load"/>
+  <rosparam file="$(find mobilearmbot_control)/config/sim_controller.yaml" command="load"/>
 
   <node 
 	  name="controller_spawner" 
