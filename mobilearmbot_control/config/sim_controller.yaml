@@ -1,0 +1,24 @@
+controller_list:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 1000
+
+  arm_link1_joint_position:
+    type: position_controllers/JointPositionController
+    joint: arm_link1_joint
+
+  arm_link2_joint_position:
+    type: position_controllers/JointPositionController
+    joint: arm_link2_joint
+
+  arm_link3_joint_position:
+    type: position_controllers/JointPositionController
+    joint: arm_link3_joint
+
+  left_end_effector_joint_position:
+    type: position_controllers/JointPositionController
+    joint: left_end_effector_joint
+
+  right_end_effector_joint_position:
+    type: position_controllers/JointPositionController
+    joint: right_end_effector_joint

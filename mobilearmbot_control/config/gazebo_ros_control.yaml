@@ -1,0 +1,27 @@
+gazebo_ros_control:
+        pid_gains:
+                arm_link1_joint:
+                        p: 100.0
+                        i: 0.01
+                        d: 10.0
+                        publish_state: true
+                arm_link2_joint:
+                        p: 100.0
+                        i: 0.01
+                        d: 10.0
+                        publish_state: true
+                arm_link3_joint:
+                        p: 100.0
+                        i: 0.01
+                        d: 10.0
+                        publish_state: true
+                left_end_effector_joint:
+                        p: 100.0
+                        i: 0.01
+                        d: 10.0
+                right_end_effector_joint:
+                        p: 100.0
+                        i: 0.01
+                        d: 10.0
+ 
+                          

@@ -1,7 +1,5 @@
 # mobilearmbot
 
-NOTE: Due to my experience with ROS, I decided that this project was a out of my scope (Currently, I'm having trouble due to my inexperience with moveit). Due to this, I will temporarily put this project on hold. Going forward, I'll likely work on a fixed arm instead so that I get familiar with moveit, and then come back to this in the future.
-
 This is a ROS package that I'm working on. My end goal is to create a four wheel mobile manipulator.
 
 This robot will probably not be viable to create in real life. My intent is to familarize myself with ROS, rather than

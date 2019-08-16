@@ -74,6 +74,10 @@
 	<xacro:property name="end_effector_height" value="0.01"/>
 	<xacro:property name="end_effector_mass" value="0.1"/>
 
+	<!-- Fixed link -->
+	<link name="odom">
+	</link>
+
 	<!-- Base link --> 
 	<link name="base_link">
 		<visual>
@@ -94,6 +98,10 @@
 			<xacro:box_inertia mass="${base_mass}" length="${base_length}" width="${base_width}" height="${base_height}"/>
 		</inertial>	
 	</link>
+	<joint name="odom_joint" type="fixed">
+		<parent link="odom"/>
+		<child link="base_link"/>
+	</joint>
 
 	<!-- Right front wheel -->
 	<link name="right_front_wheel">
