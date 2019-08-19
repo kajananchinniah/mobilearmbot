@@ -1,0 +1,10 @@
+<launch>
+  <rosparam file="$(find mobilearmbot_control)/config/mobilearmbot_control.yaml" command="load"/>
+  <arg name="robot_name" default="mobilearmbot"/>
+
+  <node 
+          name="controller_spawner" 
+          pkg="controller_manager" type="spawner" respawn="false"
+          output="screen" ns="$(arg robot_name)" 
+          args="joint_state_controller mobilearmbot_arm_controller mobilearmbot_claw_controller"/>
+</launch>

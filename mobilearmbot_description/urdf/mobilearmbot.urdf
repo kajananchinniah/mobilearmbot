@@ -78,7 +78,6 @@
   <gazebo>
     <plugin filename="libgazebo_ros_skid_steer_drive.so" name="mobilearmbot_controller">
       <updateRate>30.0</updateRate>
-      <robotNamespace>/</robotNamespace>
       <leftFrontJoint>left_front_wheel_joint</leftFrontJoint>
       <rightFrontJoint>right_front_wheel_joint</rightFrontJoint>
       <leftRearJoint>left_back_wheel_joint</leftRearJoint>
@@ -98,11 +97,10 @@
   </gazebo>
   <gazebo>
     <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
-      <robotNamespace>/</robotNamespace>
-    </plugin>
+		</plugin>
   </gazebo>
-  <!-- Added for KDL -->
-  <link name="dummy">
+  <!--Fixed Frame-->
+  <link name="odom">
 	</link>
   <!-- Base link -->
   <link name="base_link">
@@ -124,8 +122,8 @@
       <inertia ixx="0.028125" ixy="0.0" ixz="0.0" iyy="0.045" iyz="0.0" izz="0.028125"/>
     </inertial>
   </link>
-  <joint name="dummy_joint" type="fixed">
-    <parent link="dummy"/>
+  <joint name="odom_joint" type="fixed">
+    <parent link="odom"/>
     <child link="base_link"/>
   </joint>
   <!-- Right front wheel -->

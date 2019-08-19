@@ -1,3 +1,4 @@
+#Currently unused; causing an issue where robot starts sinking to ground
 gazebo_ros_control:
         pid_gains:
                 arm_link1_joint:
