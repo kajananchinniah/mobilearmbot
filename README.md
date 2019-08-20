@@ -21,8 +21,8 @@ Future plans:
 - Setup ROS' navigation stack & try to add SLAM to the robot (I also have to learn how SLAM works
 
 Resources & tutorials I consulted:
-http://wiki.ros.org/urdf/Tutorials
-http://docs.ros.org/melodic/api/moveit_tutorials/html/index.html#
-https://github.com/AS4SR/general_info/wiki/Basic-ROS-MoveIt!-and-Gazebo-Integration
+- http://wiki.ros.org/urdf/Tutorials
+- http://docs.ros.org/melodic/api/moveit_tutorials/html/index.html# 
+- https://github.com/AS4SR/general_info/wiki/Basic-ROS-MoveIt!-and-Gazebo-Integration
 
 
