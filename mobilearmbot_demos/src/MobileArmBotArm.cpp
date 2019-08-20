@@ -1,4 +1,4 @@
-#include "MobileArmBotArm_TrajectoryController.hpp"
+#include "MobileArmBotArm.hpp"
 
 MobileArmBotArm::MobileArmBotArm(ros::NodeHandle nh)
 {
