@@ -4,8 +4,6 @@ This is a ROS package that I'm working on. My end goal is to create a four wheel
 
 This robot will probably not be viable to create in real life. My intent is to familarize myself with ROS, rather than create a real robot.
 
-NOTE: for now, I will not be relying on my moveit package (since I need to write action servers as well). For now, I'll be relying on position controllers, and writing to them directly through simulation. This is less realistic, but also simpler. I did this because I lack the knowledge for now to write the action server, and how the controller is supposed to work exactly.
-
 For sensors, I currently only plan on having a laser scan & a camera (camera will be added later). 
 
 I'm planning on using a simple manipulator. 
@@ -20,4 +18,11 @@ Future plans:
 - Add a kinect or other type of sensor to allow for perception purposes (will be following moveit tutorials for this)
 - Setup the gazebo file (basically just have some worlds & launch files)
 - Add a teleop in mobilearmbot_teleop. Control will be done via keyboard: drive will be W,A,S,D. Currently need to come up with a plan for controlling the manipulator
-- Setup ROS' navigation stack & try to add SLAM to the robot (I also have to learn how SLAM works)
+- Setup ROS' navigation stack & try to add SLAM to the robot (I also have to learn how SLAM works
+
+Resources & tutorials I consulted:
+http://wiki.ros.org/urdf/Tutorials
+http://docs.ros.org/melodic/api/moveit_tutorials/html/index.html#
+https://github.com/AS4SR/general_info/wiki/Basic-ROS-MoveIt!-and-Gazebo-Integration
+
+
