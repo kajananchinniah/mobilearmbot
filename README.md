@@ -21,7 +21,3 @@ Future plans:
 - Setup the gazebo file (basically just have some worlds & launch files)
 - Add a teleop in mobilearmbot_teleop. Control will be done via keyboard: drive will be W,A,S,D. Currently need to come up with a plan for controlling the manipulator
 - Setup ROS' navigation stack & try to add SLAM to the robot (I also have to learn how SLAM works)
-
-Potential unused packages:
-- mobilearmbot_msgs
-
