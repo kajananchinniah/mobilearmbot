@@ -14,7 +14,6 @@ MobileArmBotDrive::MobileArmBotDrive(ros::NodeHandle nh)
 		   this);
    this->cmd_vel_pub = this->nh.advertise<geometry_msgs::Twist>("cmd_vel", 
 		   this->queue_size);
-   this->target_distance_pub = this->nh.advertise<std_msgs::Float32>("target_distance", this->queue_size);
 }
 
 
@@ -31,6 +30,7 @@ void MobileArmBotDrive::laserScanCallback(const sensor_msgs::LaserScan &msg)
 	 this->chosen_index = i;
       }
    }
+
    if (this->closest_target >= 9999.99)
    {
 	   ROS_ERROR_STREAM("Cannot find target!");
@@ -45,7 +45,6 @@ void MobileArmBotDrive::laserScanCallback(const sensor_msgs::LaserScan &msg)
    ROS_INFO_STREAM("Heading Angle = " << this->heading_angle << " Vel = " << this->vel);
    this->cmd_vel_pub.publish(this->vel);
    this->closest_target_msg.data = this->closest_target;
-   this->target_distance_pub.publish(this->closest_target_msg);
 }
 
 void MobileArmBotDrive::mobilearmbot_drive_controller(float dist, float angle)

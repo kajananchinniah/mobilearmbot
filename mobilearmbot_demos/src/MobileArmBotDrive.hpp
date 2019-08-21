@@ -17,8 +17,7 @@ class MobileArmBotDrive
       ros::NodeHandle nh;
       ros::Subscriber laser_sub;
       ros::Publisher cmd_vel_pub;
-      ros::Publisher target_distance_pub;
-
+      
       geometry_msgs::Twist vel;
       std_msgs::Float32 closest_target_msg;
       int queue_size;
