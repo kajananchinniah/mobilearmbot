@@ -4,8 +4,11 @@
 	<include file="$(find mobilearmbot_gazebo)/launch/world.launch">
 		<arg name="robot_name" value="$(arg robot_name)"/>
 	</include>
+	<include file="$(find mobilearmbot_moveit)/launch/move_group.launch">
+		<arg name="publish_monitored_planning_scene" value="true"/>
+	</include>
 	<node pkg="mobilearmbot_demos" type="MobileArmBotDrive" name="MobileArmBotDrive" ns="$(arg robot_name)"/>
-	<node pkg="mobilearmbot_demos" type="MobileArmBotArm" name="MobileArmBotArm" ns="$(arg robot_name)"/>
+	<node pkg="mobilearmbot_demos" type="ArmRandomGoal" name="ArmRandomGoal"/>
 </launch>
 
 
