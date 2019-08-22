@@ -29,5 +29,5 @@ target_link_libraries(MobileArmBotDrive ${catkin_LIBRARIES})
 add_executable(ArmRandomGoal src/ArmRandomGoal.cpp)
 target_link_libraries(ArmRandomGoal ${catkin_LIBRARIES})
 
-#add_executable(MobileArmBotArm src/MobileArmBotArm_node.cpp src/MobileArmBotArm.cpp)
-#target_link_libraries(MobileArmBotArm ${catkin_LIBRARIES})
+add_executable(MobileArmBotArm src/MobileArmBotArm_node.cpp src/MobileArmBotArm.cpp)
+target_link_libraries(MobileArmBotArm ${catkin_LIBRARIES})

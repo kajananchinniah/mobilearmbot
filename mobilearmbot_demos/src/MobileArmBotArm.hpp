@@ -5,10 +5,12 @@
 #include <moveit/move_group_interface/move_group_interface.h>
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
 
-
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
 #include <sensor_msgs/LaserScan.h>
+
+#include <string>
+#include <math.h>
 
 class MobileArmBotArm
 {
@@ -18,20 +20,24 @@ class MobileArmBotArm
    private:
       ros::NodeHandle nh;
       ros::Subscriber laser_sub;
+      int queue_size;
+      std::string laser_topic_name;
+      float heading_angle;
+      float closest_target;
+      float in_range;
+      int chosen_index;
 
       int n_objects_to_grasp; //currently only supports 1 (i.e. the closest object)
-      int n_collision_objects; 
+      int n_collision_objects; //this should be set to 2 (ground & object itself)
 
       float obj_radius; //currently will only support the beer can found from gazebo
       float obj_height;
-      float obj_x;
-      float obj_y;
-      float obj_z;
 
       std::vector<moveit_msgs::Grasp> grasps;
       std::vector<moveit_msgs::CollisionObject> collision_objects;
       tf2::Quaternion orientation;
-
+      moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
+      moveit::planning_interface::MoveGroupInterface group;
 
       void laserScanCallback(const sensor_msgs::LaserScan& msg);
       void openEndEffector(trajectory_msgs::JointTrajectory& posture);

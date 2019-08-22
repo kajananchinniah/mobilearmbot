@@ -68,7 +68,6 @@
                                 </noise>
                         </ray>
 			<plugin name="mobilearmbot_laserscan_controller" filename="libgazebo_ros_laser.so">
-				<robotNamespace>/mobilearmbot</robotNamespace>
 				<topicName>scan</topicName>
                                 <frameName>base_scan</frameName>
                         </plugin>

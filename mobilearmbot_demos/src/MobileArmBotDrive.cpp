@@ -2,8 +2,8 @@
 
 MobileArmBotDrive::MobileArmBotDrive(ros::NodeHandle nh)
 {
-   ROS_INFO_STREAM("Executed!");
    this->queue_size = 5;
+   this->stop_dist = 0.4; //Hard stop when robot is super close to object 
    this->laser_topic_name = "scan";
    this->kp_vel = 0.1;
    this->kp_ang = 0.2;
@@ -12,7 +12,7 @@ MobileArmBotDrive::MobileArmBotDrive(ros::NodeHandle nh)
    this->laser_sub = this->nh.subscribe(this->laser_topic_name, 
 		   this->queue_size, &MobileArmBotDrive::laserScanCallback, 
 		   this);
-   this->cmd_vel_pub = this->nh.advertise<geometry_msgs::Twist>("cmd_vel", 
+   this->cmd_vel_pub = this->nh.advertise<geometry_msgs::Twist>("/mobilearmbot/cmd_vel", 
 		   this->queue_size);
 }
 
@@ -33,18 +33,17 @@ void MobileArmBotDrive::laserScanCallback(const sensor_msgs::LaserScan &msg)
 
    if (this->closest_target >= 9999.99)
    {
-	   ROS_ERROR_STREAM("Cannot find target!");
-	   this->vel.linear.x = 0.00;
-	   this->vel.linear.z = 0.00;
-	   this->cmd_vel_pub.publish(this->vel);
-	   return;
+      ROS_ERROR_STREAM("Cannot find target or object is within stopping distance!");
+      this->vel.linear.x = 0.00;
+      this->vel.linear.z = 0.00;
+      this->cmd_vel_pub.publish(this->vel);
+      return;
    }
 
    this->heading_angle = msg.angle_min + this->chosen_index * msg.angle_increment;
    this->mobilearmbot_drive_controller(this->closest_target, this->heading_angle);
    ROS_INFO_STREAM("Heading Angle = " << this->heading_angle << " Vel = " << this->vel);
    this->cmd_vel_pub.publish(this->vel);
-   this->closest_target_msg.data = this->closest_target;
 }
 
 void MobileArmBotDrive::mobilearmbot_drive_controller(float dist, float angle)

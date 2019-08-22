@@ -8,6 +8,5 @@ int main(int argc, char **argv)
    spinner.start();
 
    MobileArmBotArm mobilearmbotArm(nh);
-   ros::spin();
    return 0;
 }

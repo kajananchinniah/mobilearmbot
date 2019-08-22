@@ -3,12 +3,14 @@
 	<arg name="robot_name" default="mobilearmbot"/>
 	<include file="$(find mobilearmbot_gazebo)/launch/world.launch">
 		<arg name="robot_name" value="$(arg robot_name)"/>
+		<arg name="world_name" default="$(find mobilearmbot_gazebo)/worlds/empty_world_with_beer_can.world"/>
 	</include>
 	<include file="$(find mobilearmbot_moveit)/launch/move_group.launch">
 		<arg name="publish_monitored_planning_scene" value="true"/>
 	</include>
 	<node pkg="mobilearmbot_demos" type="MobileArmBotDrive" name="MobileArmBotDrive" ns="$(arg robot_name)"/>
-	<node pkg="mobilearmbot_demos" type="ArmRandomGoal" name="ArmRandomGoal"/>
+	<node pkg="mobilearmbot_demos" type="MobileArmBotArm" name="MobileArmBotArm"/>
+	<node name="rviz" pkg="rviz" type="rviz"/>
 </launch>
 
 
