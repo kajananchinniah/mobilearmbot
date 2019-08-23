@@ -35,12 +35,11 @@ void MobileArmBotArm::laserScanCallback(const sensor_msgs::LaserScan &msg)
    }
 
    this->heading_angle = msg.angle_min + this->chosen_index * msg.angle_increment;
-   if (this->closest_target <= this->in_range){
       this->group.setPlanningTime(45.0);
       this->addCollisionObjects(this->planning_scene_interface);
       ros::WallDuration(1.0).sleep();
       this->pick(this->group);
-      return;}
+      return;
 }
 
 void MobileArmBotArm::openEndEffector(trajectory_msgs::JointTrajectory& posture)
@@ -71,12 +70,13 @@ void MobileArmBotArm::closeEndEffector(trajectory_msgs::JointTrajectory& posture
 void MobileArmBotArm::pick(moveit::planning_interface::MoveGroupInterface& move_group)
 {
    this->grasps.resize(1);
-   this->grasps[0].grasp_pose.header.frame_id = "arm_link1";
-   this->orientation.setRPY(0, M_PI, 0);
+   this->grasps[0].grasp_pose.header.frame_id = "base_scan";
+   //TODO: set these values
+   this->orientation.setRPY(0, 0, 0);
    grasps[0].grasp_pose.pose.orientation = tf2::toMsg(this->orientation);
-   grasps[0].grasp_pose.pose.position.x = 0.4;
-   grasps[0].grasp_pose.pose.position.y = 0.0;
-   grasps[0].grasp_pose.pose.position.z = 0.3;
+   grasps[0].grasp_pose.pose.position.x = this->closest_target * cos(this->heading_angle);
+   grasps[0].grasp_pose.pose.position.y = this->closest_target * sin(this->heading_angle);
+   grasps[0].grasp_pose.pose.position.z = 0.00;
 
    grasps[0].pre_grasp_approach.direction.header.frame_id = "arm_link1";
    // Setting pre-grasp approach
