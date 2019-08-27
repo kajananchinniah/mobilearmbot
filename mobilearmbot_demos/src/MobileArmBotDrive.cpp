@@ -7,8 +7,8 @@ MobileArmBotDrive::MobileArmBotDrive(ros::NodeHandle nh)
    this->kp_vel = 0.1;
    this->kp_ang = 0.2;
    this->nh = nh;
-   this->in_range = 0.4; //Hard stop
-
+   this->in_range = 0.75; //Hard stop
+   this->stop_moving = false;
    this->laser_sub = this->nh.subscribe(this->laser_topic_name, 
 		   this->queue_size, &MobileArmBotDrive::laserScanCallback, 
 		   this);
@@ -19,6 +19,7 @@ MobileArmBotDrive::MobileArmBotDrive(ros::NodeHandle nh)
 
 void MobileArmBotDrive::laserScanCallback(const sensor_msgs::LaserScan &msg)
 {
+   if (this->stop_moving == true) { return; }
    this->chosen_index = 0;
    this->closest_target = 9999.99;
    ROS_INFO_STREAM("Laser scan message received!");
@@ -45,6 +46,7 @@ void MobileArmBotDrive::laserScanCallback(const sensor_msgs::LaserScan &msg)
       this->vel.linear.x = 0.00;
       this->vel.linear.z = 0.00;
       this->cmd_vel_pub.publish(this->vel);
+      this->stop_moving = true;
    }
 
    this->heading_angle = msg.angle_min + this->chosen_index * msg.angle_increment;

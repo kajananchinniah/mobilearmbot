@@ -10,7 +10,7 @@
 	</include>
 	<node pkg="mobilearmbot_demos" type="MobileArmBotDrive" name="MobileArmBotDrive"/>
 	<node pkg="mobilearmbot_demos" type="MobileArmBotArm" name="MobileArmBotArm"/>
-	<node name="rviz" pkg="rviz" type="rviz"/>
+	<!-- <node name="rviz" pkg="rviz" type="rviz"/> -->
 </launch>
 
 
