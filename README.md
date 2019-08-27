@@ -1,7 +1,5 @@
 # mobilearmbot
 
-NOTE: I'm temporarily taking a break from this project to work on a smaller project (Pacman AI). When school starts, I'll be working on this every now and then when I have time. 
-
 This is a ROS package that I'm working on. My end goal is to create a four wheel mobile manipulator.
 
 This robot will probably not be viable to create in real life. My intent is to familarize myself with ROS, rather than create a real robot.
