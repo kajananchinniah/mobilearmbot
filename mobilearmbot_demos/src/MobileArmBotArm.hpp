@@ -33,15 +33,11 @@ class MobileArmBotArm
       float obj_radius; //currently will only support the beer can found from gazebo
       float obj_height;
 
-      std::vector<moveit_msgs::Grasp> grasps;
-      std::vector<moveit_msgs::CollisionObject> collision_objects;
       tf2::Quaternion orientation;
-      moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
-      moveit::planning_interface::MoveGroupInterface group;
+      moveit::planning_interface::MoveGroupInterface arm_group;
+      moveit::planning_interface::MoveGroupInterface claw_group;
 
       void laserScanCallback(const sensor_msgs::LaserScan& msg);
-      void openEndEffector(trajectory_msgs::JointTrajectory& posture);
-      void closeEndEffector(trajectory_msgs::JointTrajectory& posture);
-      void pick(moveit::planning_interface::MoveGroupInterface& move_group);
-      void addCollisionObjects(moveit::planning_interface::PlanningSceneInterface& planning_scene_interface);
+      void openEndEffector();
+      void closeEndEffector();
 };

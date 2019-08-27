@@ -25,7 +25,7 @@ class MobileArmBotDrive
       float closest_target;
       float kp_vel;
       float kp_ang;
-      float stop_dist; //Stop robot if robot is super close to object
+      float in_range; //Stop robot if robot is super close to object
 
       void laserScanCallback(const sensor_msgs::LaserScan &scanned_msg);
       void mobilearmbot_drive_controller(float dist, float angle);

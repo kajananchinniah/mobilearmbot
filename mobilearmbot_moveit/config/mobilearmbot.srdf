@@ -28,6 +28,14 @@
         <joint name="arm_link2_joint" value="0.7116" />
         <joint name="arm_link3_joint" value="-1.8918" />
     </group_state>
+    <group_state name="close" group="mobilearmbot_claw">
+        <joint name="left_end_effector_joint" value="1.89" />
+        <joint name="right_end_effector_joint" value="-1.89" />
+    </group_state>
+    <group_state name="open" group="mobilearmbot_claw">
+        <joint name="left_end_effector_joint" value="0" />
+        <joint name="right_end_effector_joint" value="0" />
+    </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="claw" parent_link="arm_link3" group="mobilearmbot_claw" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->

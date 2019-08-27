@@ -3,11 +3,11 @@
 MobileArmBotDrive::MobileArmBotDrive(ros::NodeHandle nh)
 {
    this->queue_size = 5;
-   this->stop_dist = 0.4; //Hard stop when robot is super close to object 
    this->laser_topic_name = "scan";
    this->kp_vel = 0.1;
    this->kp_ang = 0.2;
    this->nh = nh;
+   this->in_range = 0.4; //Hard stop
 
    this->laser_sub = this->nh.subscribe(this->laser_topic_name, 
 		   this->queue_size, &MobileArmBotDrive::laserScanCallback, 
@@ -38,6 +38,13 @@ void MobileArmBotDrive::laserScanCallback(const sensor_msgs::LaserScan &msg)
       this->vel.linear.z = 0.00;
       this->cmd_vel_pub.publish(this->vel);
       return;
+   }
+
+   if (this->closest_target <= this->in_range)
+   {
+      this->vel.linear.x = 0.00;
+      this->vel.linear.z = 0.00;
+      this->cmd_vel_pub.publish(this->vel);
    }
 
    this->heading_angle = msg.angle_min + this->chosen_index * msg.angle_increment;
