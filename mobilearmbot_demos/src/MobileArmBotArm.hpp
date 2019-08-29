@@ -26,12 +26,7 @@ class MobileArmBotArm
       float closest_target;
       float in_range;
       int chosen_index;
-
-      int n_objects_to_grasp; //currently only supports 1 (i.e. the closest object)
-      int n_collision_objects; //this should be set to 2 (ground & object itself)
-
-      float obj_radius; //currently will only support the beer can found from gazebo
-      float obj_height;
+      bool start_grasp;
 
       tf2::Quaternion orientation;
       moveit::planning_interface::MoveGroupInterface arm_group;

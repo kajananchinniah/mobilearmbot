@@ -7,7 +7,7 @@ This robot will probably not be viable to create in real life. My intent is to f
 For sensors, I currently only plan on having a laser scan & a kinect (kinect will be added later). 
 
 I'm currently having a lot of trouble with getting the manipulator to move the way I want it to. Going forward, I'm not entirely sure what to do, so I may work on other packages for now or occassionally try something random to get the bot to grasp the object.
-UPDATE: the problem is caused because once the first moveit command is executed, the robot suddenly gets suck indefinitely. I don't know why this is though
+UPDATE: So the problem was because I was calling the functions inside the callback. Instead, I need to figure out a way to call them outside of the callback
 
 Current file structure:
 - mobilearmbot_description contains the urdf and xacro files that describe the robot. It also contains a rviz file that will be updated later. This directory also temporarily contains launch files
