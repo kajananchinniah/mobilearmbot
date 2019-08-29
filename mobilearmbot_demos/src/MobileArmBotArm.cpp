@@ -8,7 +8,6 @@ MobileArmBotArm::MobileArmBotArm(ros::NodeHandle nh)
    this->obj_height = 0.23;
    this->laser_topic_name = "scan";
    this->nh = nh;
-   this->in_range = 0.75;
    this->laser_sub = this->nh.subscribe(this->laser_topic_name,
 		   this->queue_size, &MobileArmBotArm::laserScanCallback,
 		   this);
@@ -36,20 +35,10 @@ void MobileArmBotArm::laserScanCallback(const sensor_msgs::LaserScan &msg)
    }
 
    this->heading_angle = msg.angle_min + this->chosen_index * msg.angle_increment;
-   if (this->closest_target <= this->in_range) 
-   {
-      ROS_INFO_STREAM("Starting if block...");
-      this->arm_group.setNamedTarget("arm_getobject"); 
-      this->arm_group.move();
-      ROS_INFO_STREAM("Moving to get object target...");
-      ros::WallDuration(1.0).sleep();
-      this->closeEndEffector();
-      ros::WallDuration(1.0).sleep();
-      this->arm_group.setNamedTarget("home");
-      this->arm_group.move();
-      ros::WallDuration(1.0).sleep();
-      return;
-   }
+   this->closeEndEffector();
+   ros::WallDuration(1.0).sleep();
+   this->openEndEffector();
+   ROS_INFO_STREAM("Closest target = " << this->closest_target);
 }
 
 void MobileArmBotArm::openEndEffector()
