@@ -35,9 +35,9 @@ void MobileArmBotArm::laserScanCallback(const sensor_msgs::LaserScan &msg)
    }
 
    this->heading_angle = msg.angle_min + this->chosen_index * msg.angle_increment;
-   this->closeEndEffector();
-   ros::WallDuration(1.0).sleep();
-   this->openEndEffector();
+
+  // this->closeEndEffector();
+  // this->openEndEffector();
    ROS_INFO_STREAM("Closest target = " << this->closest_target);
 }
 

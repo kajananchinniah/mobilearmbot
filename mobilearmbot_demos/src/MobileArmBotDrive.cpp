@@ -10,7 +10,7 @@ MobileArmBotDrive::MobileArmBotDrive(ros::NodeHandle nh)
    this->laser_sub = this->nh.subscribe(this->laser_topic_name, 
 		   this->queue_size, &MobileArmBotDrive::laserScanCallback, 
 		   this);
-   this->cmd_vel_pub = this->nh.advertise<geometry_msgs::Twist>("/mobilearmbot/cmd_vel", 
+   this->cmd_vel_pub = this->nh.advertise<geometry_msgs::Twist>("mobilearmbot/cmd_vel", 
 		   this->queue_size);
 }
 
