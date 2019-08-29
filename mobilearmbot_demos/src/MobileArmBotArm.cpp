@@ -10,9 +10,6 @@ MobileArmBotArm::MobileArmBotArm(ros::NodeHandle nh)
    this->laser_sub = this->nh.subscribe(this->laser_topic_name,
 		   this->queue_size, &MobileArmBotArm::laserScanCallback,
 		   this);
-
-   this->closeEndEffector();
-   this->openEndEffector();
 }
 
 //TODO: should probably just publish the heading angle & dist from other node
@@ -37,10 +34,10 @@ void MobileArmBotArm::laserScanCallback(const sensor_msgs::LaserScan &msg)
    }
 
    this->heading_angle = msg.angle_min + this->chosen_index * msg.angle_increment;
-   if (this->closest_target <= this->in_range)
-   {
       this->start_grasp = true;
-   }
+      this->arm_group.setNamedTarget("arm_getobject");
+      this->arm_group.move();
+      this->closeEndEffector();
 }
 
 void MobileArmBotArm::openEndEffector()
