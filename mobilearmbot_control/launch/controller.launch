@@ -7,4 +7,10 @@
           pkg="controller_manager" type="spawner" respawn="false"
           output="screen" ns="$(arg robot_name)" 
           args="joint_state_controller mobilearmbot_arm_controller mobilearmbot_claw_controller"/>
+
+  <node
+          name="position_controller_spawner"
+          pkg="controller_manager" type="spawner" respawn="false" ns="$(arg robot_name)" output="screen"
+          args="--stopped arm_link1_joint_position arm_link2_joint_position arm_link3_joint_position
+                left_end_effector_joint_position right_end_effector_joint_position"/>
 </launch>
