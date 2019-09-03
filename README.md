@@ -12,7 +12,7 @@ Current file structure:
 - mobilearmbot_demos (currently doesn't work) will contain a demo of the robot driving to a can and picking it up, and then possibly driving back to the origin. This will not rely on sensors much, aside from the laser scan. This demo will only work in the included world (the location of the object shouldn't matter too much as long as it's on the ground, but the type matters a lot)
 - mobilearmbot_control currently uses position controllers (follow joint trajectory). It also contains a launch file for launching the control. 
 - mobilearmbot_gazebo contains a launch file for launching gazebo, spawning mobilearmbot, and it's controller. It currently only contains one world, but more to come (I'll likely just take turtlebot3's worlds). Note: if you're using moveit, the launch file here does not spawn the srdf that describes the groups necessary for moveit so you'll need to manually include the launch file (move_group.launch) from the mobilearmbot_moveit pkg. 
-- mobilearmbot_teleop contains code for a rudimentary way to control the drivetrain using keyboard inputs (via ncurses)
+- mobilearmbot_teleop contains code for a  way to control the drivetrain using keyboard inputs (w,a,d,x for movement and s for force stop), control the arm (via i/k for selecting arm joint and l/j for moving it) and the end effector (o to open and p to close). IMPORTANT NOTE: to exit, use q, otherwise the controller won't be switched back to follow joint trajectory.
 
 Future plans:
 - Add a kinect or other type of sensor to allow for perception purposes (will be following moveit tutorials for this)
