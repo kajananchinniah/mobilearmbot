@@ -17,6 +17,8 @@ find_package(Curses REQUIRED)
 
 include_directories(${catkin_INCLUDE_DIRS})
 
-add_executable(mobilearmbot_teleop_key src/teleop.cpp)
+add_executable(mobilearmbot_teleop_key src/MobileArmBotTeleopKeyboard_node.cpp src/MobileArmBotTeleopKeyboard.cpp)
 target_link_libraries(mobilearmbot_teleop_key ${catkin_LIBRARIES} ${CURSES_LIBRARIES})
 
+add_executable(test_teleop_key src/teleop.cpp)
+target_link_libraries(test_teleop_key ${catkin_LIBRARIES} ${CURSES_LIBRARIES})
