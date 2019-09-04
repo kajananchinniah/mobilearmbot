@@ -1,4 +1,0 @@
-TODO in this folder:
-- Figure out how to control the current arm (using moveit to do this)..
-- Add a camera
-

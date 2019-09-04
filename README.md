@@ -1,5 +1,13 @@
 # mobilearmbot
 
+IMPORTANT NOTE: Due to school starting, I will be slowing down on development on this significantly... (I may continue on it next summer)
+Missing Features:
+- A navigation stack
+- A kinect sensor
+- Functional demos (grasping an object doesn't work; probably due to my inexperience)
+- SLAM (I also still don't know how SLAM works)
+- Gazebo worlds (it has one currently)
+
 This is a ROS package that I'm working on. My end goal is to create a four wheel mobile manipulator.
 
 This robot will probably not be viable to create in real life. My intent is to familarize myself with ROS, rather than create a real robot.
@@ -17,7 +25,6 @@ Current file structure:
 Future plans:
 - Add a kinect or other type of sensor to allow for perception purposes (will be following moveit tutorials for this)
 - Setup the gazebo file (basically just have some worlds & launch files)
-- Add a teleop in mobilearmbot_teleop. Control will be done via keyboard: drive will be W,A,S,D. Currently need to come up with a plan for controlling the manipulator
 - Setup ROS' navigation stack & try to add SLAM to the robot (I also have to learn how SLAM works)
 
 Resources & tutorials I consulted:
