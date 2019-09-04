@@ -10,6 +10,7 @@ Missing Features:
 
 This is a ROS package that I'm working on. My end goal is to create a four wheel mobile manipulator.
 ![Image of mobilearmbot in Gazebo](https://github.com/kajananchinniah/mobilearmbot/blob/master/mobilearmbot.png?raw=true)
+
 This robot will probably not be viable to create in real life. My intent is to familarize myself with ROS, rather than create a real robot.
 
 For sensors, I currently only plan on having a laser scan & a kinect (kinect will be added later). 
