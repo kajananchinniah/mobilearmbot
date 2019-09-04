@@ -5,7 +5,7 @@ IMPORTANT NOTE: Due to school starting, I will be slowing down on development on
 Missing Features:
 - A navigation stack
 - A kinect sensor
-- Functional demos (grasping an object doesn't work; probably due to my inexperience)
+- Functional demos (grasping an object doesn't work; probably due to my inexperience in general, I couldn't figure it out)
 - SLAM (I also still don't know how SLAM works)
 - Gazebo worlds (it has one currently)
 
