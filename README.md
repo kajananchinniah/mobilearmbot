@@ -1,6 +1,7 @@
 # mobilearmbot
 
 IMPORTANT NOTE: Due to school starting, I will be slowing down on development on this significantly... (I may continue on it next summer)
+
 Missing Features:
 - A navigation stack
 - A kinect sensor
